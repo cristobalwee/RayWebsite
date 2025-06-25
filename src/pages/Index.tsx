@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
@@ -18,7 +17,6 @@ const Index = () => {
         duration: 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
-        smoothTouch: false,
       });
 
       lenisRef.current = lenis;
@@ -32,7 +30,7 @@ const Index = () => {
 
       // Intersection Observer for section animations
       const observerOptions = {
-        threshold: 0.1,
+        threshold: 0.4,
         rootMargin: '0px 0px -100px 0px'
       };
 
@@ -48,7 +46,7 @@ const Index = () => {
       // Observe all sections
       const sections = document.querySelectorAll('.reveal-section');
       sections.forEach((section) => {
-        section.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-1000', 'ease-out');
+        section.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-1000', 'ease-out', 'delay-200');
         observer.observe(section);
       });
 
@@ -62,7 +60,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden">
       <Header />
       <main>
         <HeroSection />

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
 import LibrarySection from '../components/LibrarySection';
@@ -6,9 +6,10 @@ import UISection from '../components/UISection';
 import WhyRaySection from '../components/WhyRaySection';
 import DiveInSection from '../components/DiveInSection';
 import Footer from '../components/Footer';
+import { LenisProvider, useLenis } from '../contexts/LenisContext';
 
-const Index = () => {
-  const lenisRef = useRef<any>(null);
+const IndexContent = () => {
+  const { lenisRef } = useLenis();
 
   useEffect(() => {
     const initLenis = async () => {
@@ -57,7 +58,7 @@ const Index = () => {
     };
 
     initLenis();
-  }, []);
+  }, [lenisRef]);
 
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -71,6 +72,14 @@ const Index = () => {
       </main>
       <Footer />
     </div>
+  );
+};
+
+const Index = () => {
+  return (
+    <LenisProvider>
+      <IndexContent />
+    </LenisProvider>
   );
 };
 

@@ -122,6 +122,14 @@
   .quote-text {
     font-family: 'MartinaPlantijn-Black', serif;
   }
+
+  .text-lg {
+    line-height: 1.2 !important;
+  }
+
+  .text-xl {
+    line-height: 1.4 !important;
+  }
 }
 
 @layer components {

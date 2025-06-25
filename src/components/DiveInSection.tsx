@@ -1,14 +1,14 @@
 const DiveInSection = () => {
   return (
-    <section className="py-56 relative reveal-section">
+    <section className="py-32 md:py-64 relative reveal-section">
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <div className="mb-8">
-          <span className="inline-block px-4 py-2 rounded-lg text-sm bg-secondary">
+        <div className="mb-6 md:mb-8">
+          <span className="inline-block px-4 py-2 rounded-lg text-xs md:text-sm bg-secondary">
             Day 1 / 1000
           </span>
         </div>
         
-        <h2 className="text-5xl md:text-7xl font-bold mb-16 leading-tight">
+        <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-12 md:mb-16 leading-tight">
           Ready to dive into your
           <br />
           <span>
@@ -16,8 +16,8 @@ const DiveInSection = () => {
           </span>
         </h2>
         
-        <button className="btn-primary text-xl shadow-2xl">
-          Get the App
+        <button className="btn-primary text-lg md:text-xl shadow-2xl">
+          $9.99 on the App Store
         </button>
       </div>
     </section>

@@ -112,7 +112,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
     >
       <div className="text-center">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white mb-4" style={{ fontFamily: 'MartinaPlantijn-Black, serif' }}>
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 md:mb-4" style={{ fontFamily: 'MartinaPlantijn-Black, serif' }}>
             Loading<span className="text-[#C6698B]">.</span>
           </h1>
         </div>

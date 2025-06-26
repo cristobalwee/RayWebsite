@@ -12,11 +12,21 @@ const UISection = () => {
           or pay a monthly subscription.
         </p>
 
-        <img 
-          src="/reader.webp" 
-          alt="Ray App Preview" 
-          className="h-auto object-contain max-w-4xl mx-8 md:mx-0 max-w-full"
-        />
+        <div className="relative max-w-4xl mx-8 md:mx-0 min-w-[300px]">
+          <img 
+            src="/phone.webp" 
+            alt="Ray App Preview" 
+            className="h-auto object-contain max-w-full relative"
+          />
+          <video
+            src="/ui_recording.webm"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 object-cover ui-recording"
+          />
+        </div>
       </div>
     </section>
   );

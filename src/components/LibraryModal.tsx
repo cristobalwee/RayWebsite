@@ -80,24 +80,27 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-8 right-8 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+          className="absolute top-4 right-4 md:top-8 md:right-8 z-10 p-2 bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer"
         >
           <X size={20} className="md:w-6 md:h-6 text-gray-700" />
         </button>
 
         {/* Header */}
-        <div className="flex items-center justify-between px-4 md:px-8 pt-4 md:pt-8 pb-4 md:pb-6">
+        <div className="flex flex-col items-center justify-center px-4 md:px-8 pt-8 md:pt-12 pb-4 md:pb-6 gap-4">
           <h2 className="text-4xl md:text-5xl font-bold">The Vault</h2>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl md:max-w-xl text-center leading-tight">
+            Ray comes preloaded with a vault of 1000+ readings to get you started, always available offline and constantly getting updated.
+          </p>
         </div>
 
         {/* Filters */}
-        <div className="px-4 md:px-8 pb-4 md:pb-6">
-          <div className="flex gap-2 md:gap-3 overflow-x-auto mx-[-28px] px-[28px]">
+        <div className="px-4 md:px-8 pb-6 md:pb-10">
+          <div className="flex gap-2 md:gap-3 overflow-x-auto mx-[-28px] px-[28px] justify-start sm:justify-center sm:mx-0 sm:px-0 sm:flex-wrap">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 md:px-6 py-2 md:py-3 rounded-full md:text-lg font-medium transition-all duration-200 whitespace-nowrap ${
+                className={`px-4 md:px-6 py-2 rounded-full md:text-lg font-medium transition-all duration-200 whitespace-nowrap ${
                   selectedCategory === category
                     ? 'bg-primary text-primary-foreground'
                     : 'bg-secondary text-secondary-foreground hover:bg-muted'
@@ -132,7 +135,7 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
                     {reading.author}
                   </p>
                   <span
-                    className="inline-block px-1 md:px-2 py-0.5 md:py-1 rounded-full text-xs font-medium text-white text-sm"
+                    className="inline-block px-1 md:px-3 py-0.5 md:py-1.5 rounded-full font-medium text-white text-sm"
                     style={{ 
                       backgroundColor: CATEGORY_COLORS[reading.category as keyof typeof CATEGORY_COLORS],
                     }}
@@ -148,8 +151,8 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
         <div className="absolute bottom-0 left-0 right-0 h-72 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
           
           {/* Locked Content Message */}
-          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-center w-full">
-            <h3 className="text-2xl font-semibold text-foreground mb-2 md:mb-4">
+          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center w-full">
+            <h3 className="text-2xl font-semibold text-foreground mb-2">
               Get the app to see all 1000+ readings
             </h3>
             <p className="text-lg text-muted-foreground">

@@ -133,6 +133,20 @@
   .quote-text {
     font-family: 'MartinaPlantijn-Black', serif;
   }
+
+  .ui-recording {
+    width: calc(100% - 44px);
+    height: calc(100% - 64px);
+    border-radius: 42px;
+    margin: 30px 22px 22px;
+
+    @media (max-width: 520px) {
+      width: calc(100% - 36px);
+      height: calc(100% - 48px);
+      border-radius: 32px;
+      margin: 24px 18px 16px;
+    }
+  }
 }
 
 @layer utilities {

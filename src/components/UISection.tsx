@@ -6,7 +6,7 @@ const UISection = () => {
           No accounts, no subscriptions, no distractions.
         </h2>
         
-        <p className="text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 max-w-3xl">
+        <p className="text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 max-w-3xl leading-tight">
           Our goal with Ray is to create a beautiful, focused reading experience with
           seamless interactions. Enjoy it to the fullest without having to create an account
           or pay a monthly subscription.

@@ -28,7 +28,7 @@ const Header = () => {
           <a onClick={() => lenisRef.current.scrollTo('#about')} className="hidden md:block transition-all duration-300 hover:text-[#AAA] hover:scale-105 cursor-pointer text-sm md:text-base">
             Why Ray?
           </a>
-          <button className="btn-secondary transition-all duration-300 hover:scale-105 text-sm md:text-base px-4 md:px-6 py-2 md:py-3">
+          <button className="border border-[#464646] rounded-lg transition-all duration-300 hover:scale-105 text-sm md:text-base px-4 md:px-6 py-2 md:py-3">
             Get the App
           </button>
         </nav>

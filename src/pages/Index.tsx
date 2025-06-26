@@ -13,6 +13,9 @@ const IndexContent = () => {
 
   useEffect(() => {
     const initLenis = async () => {
+      // Reset scroll position to top on page load
+      window.scrollTo(0, 0);
+      
       const Lenis = (await import('@studio-freight/lenis')).default;
       const lenis = new Lenis({
         duration: 1.2,
@@ -21,6 +24,9 @@ const IndexContent = () => {
       });
 
       lenisRef.current = lenis;
+
+      // Also reset Lenis scroll position
+      lenis.scrollTo(0, { immediate: true });
 
       function raf(time: number) {
         lenis.raf(time);

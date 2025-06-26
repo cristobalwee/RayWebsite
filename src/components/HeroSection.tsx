@@ -28,32 +28,35 @@ const HeroSection = () => {
         </h1>
         
         <p 
-          className={`text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 max-w-3xl mx-auto transition-all duration-1000 ease-out delay-300 ${
+          className={`text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 max-w-3xl mx-auto transition-all duration-1000 ease-out delay-100 leading-tight ${
             isLoaded 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-8'
           }`}
         >
-          One short reading a day. 1000 days of thought. No distractions. No
-          subscriptions. Just timeless words — beautifully delivered.
+          One reading a day. A thousand days of thought.<br className="hidden sm:block" /><span className='inline sm:hidden'>&nbsp;</span>
+          No distractions. No subscriptions. Just timeless words — beautifully delivered.
         </p>
         
-        <button 
-          className={`btn-primary text-base md:text-lg transition-all duration-1000 ease-out delay-500 ${
-            isLoaded 
-              ? 'opacity-100 translate-y-0 scale-100' 
-              : 'opacity-0 translate-y-8 scale-95'
-          }`}
-        >
-          Get the App
-        </button>
+        <div className={`flex flex-col justify-center items-center gap-4 duration-1000 ease-out delay-200 ${
+          isLoaded 
+            ? 'opacity-100 translate-y-0 scale-100' 
+            : 'opacity-0 translate-y-8 scale-95'
+        }`}>
+          <button 
+            className="btn-primary text-base md:text-lg transition-all duration-500 ease-out"
+          >
+            Get the App
+          </button>
+          <p className="text-sm text-muted-foreground">One-time purchase, $9.99.</p>
+        </div>
       </div>
 
       {/* Hero image */}
       <img 
         src="/hero.webp" 
         alt="Ray App Preview" 
-        className={`h-auto object-contain md:w-full md:max-w-4xl max-w-xl transition-all duration-1000 ease-out delay-700 ${
+        className={`h-auto object-contain md:w-full md:max-w-4xl max-w-xl transition-all duration-1000 ease-out delay-300 ${
           isLoaded 
             ? 'opacity-100 translate-y-0 scale-100' 
             : 'opacity-0 translate-y-12 scale-95'

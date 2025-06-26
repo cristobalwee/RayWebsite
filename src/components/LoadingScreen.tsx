@@ -89,7 +89,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
         setIsVisible(false);
         setTimeout(() => {
           onLoadingComplete();
-        }, 400); // Wait for slide animation to complete
+        }, 800); // Wait for slide animation to complete
       }, 600); // Wait 400ms at 100% before fading out
     };
 
@@ -106,32 +106,25 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
 
   return (
     <div 
-      className={`fixed inset-0 z-50 bg-black flex items-center justify-center transition-all duration-500 ease-in-out ${
-        isVisible 
-          ? 'opacity-100' 
-          : 'opacity-0'
-      } ${
+      className={`fixed inset-0 z-50 bg-[#171717] flex items-center justify-center transition-all duration-1000 ease-custom shadow-sm ${
         !isVisible && loadingProgress === 100 ? 'transform -translate-y-full' : ''
       }`}
     >
       <div className="text-center">
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-white mb-4" style={{ fontFamily: 'MartinaPlantijn-Black, serif' }}>
-            Ray
+            Loading<span className="text-[#C6698B]">.</span>
           </h1>
-          <p className="text-gray-300 text-lg" style={{ fontFamily: 'Metric-Light, sans-serif' }}>
-            Loading your experience...
-          </p>
         </div>
         
-        <div className="w-64 h-2 bg-gray-700 rounded-full overflow-hidden">
+        <div className="w-72 h-2 bg-[#2C2C2C] rounded-full overflow-hidden">
           <div 
             className="h-full bg-white transition-all duration-300 ease-out"
             style={{ width: `${loadingProgress}%` }}
           />
         </div>
         
-        <div className="mt-4 text-gray-400 text-sm" style={{ fontFamily: 'Metric-Regular, sans-serif' }}>
+        <div className="mt-4 text-[#AAA] text-md" style={{ fontFamily: 'Metric-Regular, sans-serif' }}>
           {Math.round(loadingProgress)}%
         </div>
       </div>

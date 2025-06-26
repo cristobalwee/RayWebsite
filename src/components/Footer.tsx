@@ -4,7 +4,7 @@ const Footer = () => {
   const { lenisRef } = useLenis();
 
   return (
-    <footer className="border-t py-8 mx-8 md:py-16 max-w-7xl lg:mx-auto">
+    <footer className="border-t py-8 mx-8 md:py-16 max-w-7xl xl:mx-auto">
       <div className="lg:px-6">
         <div className="flex flex-col md:flex-row items-start md:items-stretch justify-between gap-8 mb-8">
           <div className="flex flex-col items-start justify-between gap-4">

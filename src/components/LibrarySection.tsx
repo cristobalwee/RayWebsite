@@ -14,7 +14,7 @@ const LibrarySection = () => {
                 1000+ short stories, poems, and essays at your fingertips
               </h2>
               
-              <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-3xl">
+              <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-3xl leading-tight">
                 Access a curated library of 1000+ short-form readings, available
                 offline anytime – yours to explore, yours to keep.
               </p>
@@ -27,7 +27,7 @@ const LibrarySection = () => {
               </button>
             </div>
 
-            <div className="relative max-h-[350px] md:max-h-[200px]">
+            <div className="relative max-h-[350px] md:max-h-[200px] min-w-[230px]">
               {/* Phone mockup */}
               <img 
                 src="/vault.webp" 

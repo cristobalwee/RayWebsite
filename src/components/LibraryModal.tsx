@@ -77,25 +77,27 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
             ? 'opacity-100 scale-100 translate-y-0' 
             : 'opacity-0 scale-95 translate-y-4'
       }`}>
+        {/* Close Button */}
+        <button
+          onClick={handleClose}
+          className="absolute top-8 right-8 z-10 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+        >
+          <X size={20} className="md:w-6 md:h-6 text-gray-700" />
+        </button>
+
         {/* Header */}
         <div className="flex items-center justify-between px-4 md:px-8 pt-4 md:pt-8 pb-4 md:pb-6">
-          <h2 className="text-2xl md:text-5xl font-bold">The Vault</h2>
-          <button
-            onClick={handleClose}
-            className="p-2 hover:bg-secondary rounded-lg transition-colors"
-          >
-            <X size={20} className="md:w-6 md:h-6" />
-          </button>
+          <h2 className="text-4xl md:text-5xl font-bold">The Vault</h2>
         </div>
 
         {/* Filters */}
         <div className="px-4 md:px-8 pb-4 md:pb-6">
-          <div className="flex flex-wrap gap-2 md:gap-3">
+          <div className="flex gap-2 md:gap-3 overflow-x-auto mx-[-28px] px-[28px]">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-3 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-200 ${
+                className={`px-4 md:px-6 py-2 md:py-3 rounded-full md:text-lg font-medium transition-all duration-200 whitespace-nowrap ${
                   selectedCategory === category
                     ? 'bg-primary text-primary-foreground'
                     : 'bg-secondary text-secondary-foreground hover:bg-muted'
@@ -108,21 +110,21 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
         </div>
 
         {/* Content */}
-        <div className="px-2 md:px-8 pb-4 md:pb-8 overflow-y-auto max-h-[calc(95vh-180px)] md:max-h-[calc(90vh-200px)] min-h-[calc(70vh-180px)] md:min-h-[calc(80vh-200px)]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
+        <div className="px-2 md:px-8 pb-4 md:pb-8 overflow-hidden relative">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-6">
             {filteredReadings.map((reading) => (
               <div
                 key={reading.id}
-                className="bg-card rounded-[12px] md:rounded-[16px] overflow-hidden hover:scale-105 transition-transform duration-200 cursor-pointer"
+                className="bg-card rounded-[12px] md:rounded-[16px] overflow-hidden flex flex-col justify-between"
               >
-                <div className="overflow-hidden flex items-center justify-center pt-3 md:pt-4">
+                <div className="overflow-hidden flex items-center justify-center pt-4 md:pt-6">
                   <img
                     src={reading.imageUrl}
                     alt={reading.title}
-                    className="w-1/2 h-1/2 object-cover rounded-[6px] md:rounded-[8px]"
+                    className="w-1/2 object-cover rounded-[6px] md:rounded-[8px]"
                   />
                 </div>
-                <div className="p-3 md:p-4">
+                <div className="p-3 md:p-5">
                   <h3 className="font-bold text-sm md:text-lg mb-1 line-clamp-2">
                     {reading.title}
                   </h3>
@@ -130,10 +132,9 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
                     {reading.author}
                   </p>
                   <span
-                    className="inline-block px-1 md:px-2 py-0.5 md:py-1 rounded-full text-xs font-medium"
+                    className="inline-block px-1 md:px-2 py-0.5 md:py-1 rounded-full text-xs font-medium text-white text-sm"
                     style={{ 
-                      backgroundColor: CATEGORY_COLORS[reading.category as keyof typeof CATEGORY_COLORS] + '20',
-                      color: CATEGORY_COLORS[reading.category as keyof typeof CATEGORY_COLORS]
+                      backgroundColor: CATEGORY_COLORS[reading.category as keyof typeof CATEGORY_COLORS],
                     }}
                   >
                     {reading.category === 'Short_stories' ? 'Short stories' : reading.category}
@@ -143,6 +144,18 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
             ))}
           </div>
         </div>
+        {/* Blur Gradient Overlay */}
+        <div className="absolute bottom-0 left-0 right-0 h-72 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
+          
+          {/* Locked Content Message */}
+          <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-center w-full">
+            <h3 className="text-2xl font-semibold text-foreground mb-2 md:mb-4">
+              Get the app to see all 1000+ readings
+            </h3>
+            <p className="text-lg text-muted-foreground">
+              Unlock the full library with Ray
+            </p>
+          </div>
       </div>
     </div>
   );

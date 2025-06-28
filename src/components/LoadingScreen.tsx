@@ -6,20 +6,31 @@ interface LoadingScreenProps {
 
 const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [contentVisible, setContentVisible] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
 
   useEffect(() => {
-    // Fade in the loader after a short delay
+    // Fade in the content after a short delay
+    const contentFadeInTimer = setTimeout(() => {
+      setContentVisible(true);
+    }, 400);
+
+    // Set the slide-out visibility state
     const fadeInTimer = setTimeout(() => {
       setIsVisible(true);
     }, 200);
 
+    // Start progress after content is visible
     let progress = 0;
-    const progressInterval = setInterval(() => {
-      progress += Math.random() * 10;
-      if (progress > 85) progress = 85;
-      setLoadingProgress(Math.min(progress, 85));
-    }, 150);
+    let progressInterval: NodeJS.Timeout;
+    
+    const startProgress = setTimeout(() => {
+      progressInterval = setInterval(() => {
+        progress += Math.random() * 10;
+        if (progress > 85) progress = 85;
+        setLoadingProgress(Math.min(progress, 85));
+      }, 150);
+    }, 500);
 
     // Function to check if custom fonts are loaded
     const checkCustomFontsLoaded = async () => {
@@ -82,7 +93,9 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
     // Always complete to 100% and wait 400ms before fading out
     const completeLoading = () => {
       // Clear the progress interval to prevent it from going backwards
-      clearInterval(progressInterval);
+      if (progressInterval) {
+        clearInterval(progressInterval);
+      }
       setLoadingProgress(100);
       
       setTimeout(() => {
@@ -94,13 +107,18 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
     };
 
     // Set a minimum loading time and ensure we always reach 100%
+    // Adjusted to account for content fade-in delay
     setTimeout(() => {
       completeLoading();
-    }, 2000); // Minimum 2 seconds total loading time
+    }, 2000); // Minimum 2.4 seconds total loading time
 
     return () => {
       clearTimeout(fadeInTimer);
-      clearInterval(progressInterval);
+      clearTimeout(contentFadeInTimer);
+      clearTimeout(startProgress);
+      if (progressInterval) {
+        clearInterval(progressInterval);
+      }
     };
   }, [onLoadingComplete]);
 
@@ -110,7 +128,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
         !isVisible && loadingProgress === 100 ? 'transform -translate-y-full' : ''
       }`}
     >
-      <div className="text-center">
+      <div className={`text-center transition-opacity duration-700 ease-out ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 md:mb-4" style={{ fontFamily: 'MartinaPlantijn-Black, serif' }}>
             Loading<span className="text-[#C6698B]">.</span>

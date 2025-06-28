@@ -70,7 +70,7 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
       />
       
       {/* Modal */}
-      <div className={`relative bg-background rounded-[16px] md:rounded-[24px] w-full max-w-7xl max-h-[95vh] md:max-h-[90vh] overflow-hidden transition-all duration-300 p-3 md:p-5 ${
+      <div className={`relative bg-background rounded-[16px] md:rounded-[24px] w-full max-w-7xl max-h-[95dvh] md:max-h-[90dvh] overflow-hidden transition-all duration-300 p-3 md:p-5 ${
         isAnimatingOut 
           ? 'opacity-0 scale-95 translate-y-4' 
           : isAnimatingIn 
@@ -89,7 +89,7 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
         <div className="flex flex-col items-center justify-center px-4 md:px-8 pt-8 md:pt-12 pb-4 md:pb-6 gap-4">
           <h2 className="text-4xl md:text-5xl font-bold">The Vault</h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl md:max-w-xl text-center leading-tight">
-            Ray comes preloaded with a vault of 1000+ readings to get you started, always available offline and constantly getting updated.
+            Ray comes preloaded with a vault of 1000+ readings for your journey, always available offline and constantly getting updated.
           </p>
         </div>
 
@@ -102,8 +102,8 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 md:px-6 py-2 rounded-full md:text-lg font-medium transition-all duration-200 whitespace-nowrap ${
                   selectedCategory === category
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-secondary text-secondary-foreground hover:bg-muted'
+                    ? 'border border-[transparent] bg-primary text-primary-foreground'
+                    : 'border border-[#464646] text-secondary-foreground hover:bg-muted'
                 }`}
               >
                 {category === 'Short_stories' ? 'Short stories' : category}
@@ -114,17 +114,17 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
 
         {/* Content */}
         <div className="px-2 md:px-8 pb-4 md:pb-8 overflow-hidden relative">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3 md:gap-6">
             {filteredReadings.map((reading) => (
               <div
                 key={reading.id}
-                className="bg-card rounded-[12px] md:rounded-[16px] overflow-hidden flex flex-col justify-between"
+                className="bg-card rounded-[12px] md:rounded-[16px] overflow-hidden flex flex-col justify-center"
               >
                 <div className="overflow-hidden flex items-center justify-center pt-4 md:pt-6">
                   <img
                     src={reading.imageUrl}
                     alt={reading.title}
-                    className="w-1/2 object-cover rounded-[6px] md:rounded-[8px]"
+                    className="w-[40%] object-cover rounded-[6px] md:rounded-[8px]"
                   />
                 </div>
                 <div className="p-3 md:p-5">
@@ -135,7 +135,7 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
                     {reading.author}
                   </p>
                   <span
-                    className="inline-block px-1 md:px-3 py-0.5 md:py-1.5 rounded-full font-medium text-white text-sm"
+                    className="inline-block px-3 py-0.5 md:py-1.5 rounded-full font-medium text-white text-sm"
                     style={{ 
                       backgroundColor: CATEGORY_COLORS[reading.category as keyof typeof CATEGORY_COLORS],
                     }}
@@ -152,7 +152,7 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
           
           {/* Locked Content Message */}
           <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center w-full">
-            <h3 className="text-2xl font-semibold text-foreground mb-2">
+            <h3 className="text-2xl font-semibold text-foreground mb-2 max-w-sm md:max-w-none mx-auto">
               Get the app to see all 1000+ readings
             </h3>
             <p className="text-lg text-muted-foreground">

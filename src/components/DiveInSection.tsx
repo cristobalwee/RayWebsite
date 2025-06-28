@@ -8,12 +8,10 @@ const DiveInSection = () => {
           </span>
         </div>
         
-        <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-12 md:mb-16 leading-tight">
+        <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-8 md:mb-14 leading-tight">
           Ready to dive into your
-          <br />
-          <span>
-            1000-day journey?
-          </span>
+          <br className="hidden sm:block" />
+          &nbsp;1000-day journey?
         </h2>
         
         <button className="btn-primary text-lg md:text-xl shadow-2xl">

@@ -1,11 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { X } from 'lucide-react';
 import { READINGS, CATEGORY_COLORS } from '../constants';
+import ReadingThumbnail from './ReadingThumbnail';
 
 interface LibraryModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+// Fisher-Yates shuffle algorithm
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All readings');
@@ -14,9 +25,16 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
 
   const categories = ['All readings', 'Short_stories', 'Poems', 'Essays'];
   
-  const filteredReadings = selectedCategory === 'All readings' 
-    ? READINGS 
-    : READINGS.filter(reading => reading.category === selectedCategory);
+  const filteredReadings = useMemo(() => {
+    const filtered = selectedCategory === 'All readings' 
+      ? READINGS 
+      : READINGS.filter(reading => reading.category === selectedCategory);
+    
+    // Shuffle if showing all readings, otherwise show first 10
+    return selectedCategory === 'All readings' 
+      ? shuffleArray(filtered).slice(0, 10)
+      : filtered.slice(0, 10);
+  }, [selectedCategory]);
 
   const handleClose = () => {
     setIsAnimatingOut(true);
@@ -63,14 +81,14 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" data-lenis-prevent="true">
       {/* Backdrop */}
       <div 
-        className={`absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity duration-300 max-h-[min(1000px, 90dvh)] ${
           isAnimatingOut ? 'opacity-0' : isAnimatingIn ? 'opacity-100' : 'opacity-0'
         }`}
         onClick={handleClose}
       />
       
       {/* Modal */}
-      <div className={`relative bg-background rounded-[16px] md:rounded-[24px] w-full max-w-7xl max-h-[95dvh] md:max-h-[90dvh] overflow-hidden transition-all duration-300 p-3 md:p-5 ${
+      <div className={`relative bg-background rounded-[16px] md:rounded-[24px] w-full max-w-7xl h-[90dvh] max-h-[1000px] overflow-hidden transition-all duration-300 p-3 md:p-5 ${
         isAnimatingOut 
           ? 'opacity-0 scale-95 translate-y-4' 
           : isAnimatingIn 
@@ -89,7 +107,7 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
         <div className="flex flex-col items-center justify-center px-4 md:px-8 pt-8 md:pt-12 pb-4 md:pb-6 gap-4">
           <h2 className="text-4xl md:text-5xl font-bold">The Vault</h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl md:max-w-xl text-center leading-tight">
-            Ray comes preloaded with a vault of 1000+ readings for your journey, always available offline and constantly getting updated.
+            Ray comes preloaded with a vault of 1000+ timeless readings for your journey, always available offline and constantly getting updated.
           </p>
         </div>
 
@@ -114,21 +132,22 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
 
         {/* Content */}
         <div className="px-2 md:px-8 pb-4 md:pb-8 overflow-hidden relative">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
             {filteredReadings.map((reading) => (
               <div
                 key={reading.id}
                 className="bg-card rounded-[12px] md:rounded-[16px] overflow-hidden flex flex-col justify-center"
               >
-                <div className="overflow-hidden flex items-center justify-center pt-4 md:pt-6">
-                  <img
-                    src={reading.imageUrl}
-                    alt={reading.title}
-                    className="w-[40%] object-cover rounded-[6px] md:rounded-[8px]"
+                <div className="overflow-hidden flex items-center justify-center pt-4 md:pt-6 px-5 md:px-6">
+                  <ReadingThumbnail 
+                    label={reading.label}
+                    title={reading.title}
+                    author={reading.author}
+                    className="w-full max-w-[120px] md:max-w-[130px]"
                   />
                 </div>
                 <div className="p-3 md:p-5">
-                  <h3 className="font-bold text-sm md:text-lg mb-1 line-clamp-2">
+                  <h3 className="font-bold text-sm md:text-lg leading-tight mb-1 line-clamp-2">
                     {reading.title}
                   </h3>
                   <p className="text-muted-foreground text-xs md:text-sm mb-2 md:mb-3">

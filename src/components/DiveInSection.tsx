@@ -3,8 +3,8 @@ const DiveInSection = () => {
     <section className="py-32 md:py-64 relative reveal-section">
       <div className="max-w-7xl mx-auto px-6 text-center">
         <div className="mb-6 md:mb-8">
-          <span className="inline-block px-4 py-2 rounded-lg text-xs md:text-sm bg-secondary">
-            Day 1 / 1000
+          <span className="inline-block px-5 py-2 rounded-lg text-xs md:text-sm bg-secondary">
+            Day 1
           </span>
         </div>
         

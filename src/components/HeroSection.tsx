@@ -35,7 +35,7 @@ const HeroSection = () => {
           }`}
         >
           One reading a day. A thousand days of thought.<br className="hidden sm:block" /><span className='inline sm:hidden'>&nbsp;</span>
-          No distractions. No subscriptions. Just timeless words — beautifully delivered.
+          No distractions. No subscriptions. Just timeless words, beautifully delivered.
         </p>
         
         <div className={`flex flex-col justify-center items-center gap-4 duration-1000 ease-out delay-200 ${

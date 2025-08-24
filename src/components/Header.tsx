@@ -23,7 +23,7 @@ const Header = () => {
         
         <nav className="flex items-center space-x-4 md:space-x-8">
           <a onClick={() => lenisRef.current.scrollTo('#library')} className="hidden md:block transition-all duration-300 hover:text-[#AAA] hover:scale-105 cursor-pointer text-sm md:text-base">
-            Browse the Library
+            Preview the Vault
           </a>
           <a onClick={() => lenisRef.current.scrollTo('#about')} className="hidden md:block transition-all duration-300 hover:text-[#AAA] hover:scale-105 cursor-pointer text-sm md:text-base">
             Why Ray?

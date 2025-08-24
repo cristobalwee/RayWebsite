@@ -270,7 +270,7 @@ const ReadingThumbnail: React.FC<ReadingThumbnailProps> = ({
   };
 
   return (
-    <div className={`relative w-full h-[170px] rounded-[12px] overflow-hidden ${className}`}>
+    <div className={`relative w-full h-[150px] md:h-[170px] rounded-[12px] overflow-hidden ${className}`}>
       {/* Background */}
       <div 
         className="absolute inset-0"
@@ -308,7 +308,7 @@ const ReadingThumbnail: React.FC<ReadingThumbnailProps> = ({
               className="text-base font-semibold leading-tight mb-1 mr-2 max-w-full break-words"
               style={{ 
                 color: style.textColor,
-                fontSize: '14px',
+                fontSize: '12px',
               }}
             >
               {title}

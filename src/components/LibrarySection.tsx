@@ -23,7 +23,7 @@ const LibrarySection = () => {
                 className="btn-secondary"
                 onClick={() => setIsModalOpen(true)}
               >
-                Browse the Library
+                Preview the Vault
               </button>
             </div>
 

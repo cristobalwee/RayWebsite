@@ -32,8 +32,8 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
     
     // Shuffle if showing all readings, otherwise show first 10
     return selectedCategory === 'All readings' 
-      ? shuffleArray(filtered).slice(0, 10)
-      : filtered.slice(0, 10);
+      ? shuffleArray(filtered)
+      : filtered;
   }, [selectedCategory]);
 
   const handleClose = () => {
@@ -88,7 +88,7 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
       />
       
       {/* Modal */}
-      <div className={`relative bg-background rounded-[16px] md:rounded-[24px] w-full max-w-7xl h-[90dvh] max-h-[1000px] overflow-hidden transition-all duration-300 p-3 md:p-5 ${
+      <div className={`relative bg-background rounded-[16px] md:rounded-[24px] w-full max-w-7xl h-[90dvh] max-h-[1000px] overflow-y-auto transition-all duration-300 p-3 md:p-5 ${
         isAnimatingOut 
           ? 'opacity-0 scale-95 translate-y-4' 
           : isAnimatingIn 
@@ -166,18 +166,19 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
             ))}
           </div>
         </div>
-        {/* Blur Gradient Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 h-72 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
+        <div className="sticky bottom-[-1px] left-0 right-0">
+          <div className="absolute bottom-[-20px] left-0 right-0 h-64 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
           
           {/* Locked Content Message */}
-          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center w-full">
-            <h3 className="text-2xl font-semibold text-foreground mb-2 max-w-sm md:max-w-none mx-auto">
+          <div className="absolute bottom-4 text-center w-full">
+            <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-2 max-w-sm md:max-w-none mx-auto">
               Get the app to see all 1000+ readings
             </h3>
             <p className="text-lg text-muted-foreground">
               Unlock the full library with Ray
             </p>
           </div>
+        </div>
       </div>
     </div>
   );

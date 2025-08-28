@@ -15,7 +15,7 @@ const LibrarySection = () => {
               </h2>
               
               <p className="text-lg md:text-xl mb-6 md:mb-8 max-w-3xl leading-tight">
-                Access a curated library of 1000+ timless short-form readings, available
+                Access a curated library of 1000+ timeless short-form readings, available
                 offline anytime. Yours to explore, yours to keep, always.
               </p>
               

@@ -7,6 +7,7 @@ import WhyRaySection from '../components/WhyRaySection';
 import DiveInSection from '../components/DiveInSection';
 import Footer from '../components/Footer';
 import { LenisProvider, useLenis } from '../contexts/LenisContext';
+import FeaturesSection from '../components/FeaturesSection';
 
 const IndexContent = () => {
   const { lenisRef } = useLenis();
@@ -73,6 +74,7 @@ const IndexContent = () => {
         <HeroSection />
         <LibrarySection />
         <UISection />
+        <FeaturesSection />
         <WhyRaySection />
         <DiveInSection />
       </main>

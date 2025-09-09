@@ -104,9 +104,9 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
         </button>
 
         {/* Header */}
-        <div className="flex flex-col items-center justify-center px-4 md:px-8 pt-8 md:pt-12 pb-4 md:pb-6 gap-4">
+        <div className="flex flex-col items-center justify-center px-4 md:px-8 pt-8 md:pt-12 pb-5 md:pb-6 gap-4">
           <h2 className="text-4xl md:text-5xl font-bold">The Vault</h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl md:max-w-xl text-center leading-tight">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl md:max-w-xl text-center leading-tight hidden md:block">
             Ray comes preloaded with a vault of 1000+ timeless readings for your journey, always available offline and constantly getting updated.
           </p>
         </div>
@@ -118,7 +118,7 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 md:px-6 py-2 rounded-full md:text-lg font-medium transition-all duration-200 whitespace-nowrap ${
+                className={`px-4 md:px-6 md:py-2 py-1 rounded-full md:text-lg font-medium transition-all duration-200 whitespace-nowrap ${
                   selectedCategory === category
                     ? 'border border-[transparent] bg-primary text-primary-foreground'
                     : 'border border-[#464646] text-secondary-foreground hover:bg-muted'
@@ -170,8 +170,8 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
           <div className="absolute bottom-[-20px] left-0 right-0 h-64 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
           
           {/* Locked Content Message */}
-          <div className="absolute bottom-4 text-center w-full">
-            <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-2 max-w-sm md:max-w-none mx-auto">
+          <div className="absolute md:bottom-3 bottom-1 text-center w-full">
+            <h3 className="text-lg md:text-2xl font-semibold text-foreground md:mb-2 mb-1 max-w-sm md:max-w-none mx-auto">
               Get the app to see all 1000+ readings
             </h3>
             <p className="text-lg text-muted-foreground">

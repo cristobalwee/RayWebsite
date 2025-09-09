@@ -14,7 +14,6 @@ type LabelStyle = {
   textColor: string;
   textAlign: 'left' | 'center';
   textPosition: 'top' | 'center' | 'bottom';
-  hasBottomStripe?: boolean;
   hasDecorative?: 'grid' | 'gradient-rect' | 'columns' | 'bottom-gradient' | 'bottom-columns';
   reducedPadding?: boolean;
 };
@@ -46,7 +45,6 @@ const LABEL_STYLES: Record<string, LabelStyle> = {
     textColor: '#FFFFFF',
     textAlign: 'left' as const,
     textPosition: 'bottom',
-    hasBottomStripe: true,
   },
   
   // VICTORIAN_POETRY - Elegant three-color linear gradient
@@ -114,7 +112,6 @@ const LABEL_STYLES: Record<string, LabelStyle> = {
     textColor: '#FFFFFF',
     textAlign: 'left' as const,
     textPosition: 'top',
-    hasBottomStripe: true,
   },
   
   // EARLY_MODERN - White background with 3x3 grid
@@ -168,7 +165,6 @@ const ReadingThumbnail: React.FC<ReadingThumbnailProps> = ({
 
   // Get positioning classes based on text position
   const getPositionClasses = () => {
-    const hasStripe = 'hasBottomStripe' in style && style.hasBottomStripe;
     const reducedPadding = 'reducedPadding' in style && style.reducedPadding;
     const baseClasses = 'absolute flex flex-col';
     
@@ -176,7 +172,7 @@ const ReadingThumbnail: React.FC<ReadingThumbnailProps> = ({
     const topOffset = 'top-0'; // Space for decorative elements
     const padding = reducedPadding ? 'p-3' : 'p-3.5';
     const hasBottomGradient = style.hasDecorative === 'bottom-gradient';
-    const bottomOffset = hasStripe ? 'bottom-3' : hasBottomGradient ? 'bottom-16' : 'bottom-0';
+    const bottomOffset = hasBottomGradient ? 'bottom-16' : 'bottom-0';
     
     const adjustedClasses = `${baseClasses} inset-x-0 ${topOffset} ${bottomOffset} ${padding}`;
     
@@ -204,7 +200,6 @@ const ReadingThumbnail: React.FC<ReadingThumbnailProps> = ({
     }
   };
 
-  const hasBottomStripe = 'hasBottomStripe' in style && style.hasBottomStripe;
   const hasDecorative = 'hasDecorative' in style && style.hasDecorative;
 
   // Render decorative elements
@@ -288,14 +283,6 @@ const ReadingThumbnail: React.FC<ReadingThumbnailProps> = ({
               height: '84px',
               background: 'linear-gradient(117.21deg, #BCC873 -11.39%, #834B92 105.7%)'
             }}
-          />
-        )}
-
-        {/* White bottom stripe */}
-        {hasBottomStripe && (
-          <div 
-            className="absolute bottom-0 left-0 right-0 bg-white"
-            style={{ height: '12px' }}
           />
         )}
       

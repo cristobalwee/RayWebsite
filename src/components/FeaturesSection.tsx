@@ -16,7 +16,7 @@ const FeaturesSection = () => {
               Never lose your place
             </h4>
             <p className="text-lg w-full md:text-xl mb-4 md:mb-6 max-w-3xl leading-tight">
-              No pressure to finish in one sitting, you can always pick up exactly where you left off.
+              No pressure to finish in one sitting, you can always pick up where you left off.
             </p>
             <div className="relative max-h-[350px] md:max-h-[300px] min-w-[180px] px-4">
               {/* Phone mockup */}

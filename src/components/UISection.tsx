@@ -85,7 +85,7 @@ const UISection = () => {
           />
           <video
             ref={videoRef}
-            src="/ui_recording.webm"
+            src="/ui_recording.mp4"
             muted
             playsInline
             onEnded={handleVideoEnded}

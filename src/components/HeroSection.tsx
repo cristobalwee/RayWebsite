@@ -34,7 +34,7 @@ const HeroSection = () => {
               : 'opacity-0 translate-y-8'
           }`}
         >
-          One reading a day. A thousand days of thought.<br className="hidden sm:block" /><span className='inline sm:hidden'>&nbsp;</span>
+          One reading a day. Countless days of thought.<br className="hidden sm:block" /><span className='inline sm:hidden'>&nbsp;</span>
           No distractions. No subscriptions. Just timeless words, beautifully delivered.
         </p>
         

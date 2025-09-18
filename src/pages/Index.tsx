@@ -37,8 +37,22 @@ const IndexContent = () => {
       requestAnimationFrame(raf);
 
       // Intersection Observer for section animations
+      const getThreshold = () => {
+        // Use different thresholds based on screen size
+        if (window.innerWidth < 768) {
+          // Mobile: lower threshold for single column layout
+          return 0.2;
+        } else if (window.innerWidth < 1024) {
+          // Tablet: medium threshold for 2-column layout
+          return 0.3;
+        } else {
+          // Desktop: higher threshold for 3-column layout
+          return 0.4;
+        }
+      };
+
       const observerOptions = {
-        threshold: 0.4,
+        threshold: getThreshold(),
         rootMargin: '0px 0px -100px 0px'
       };
 
@@ -58,8 +72,40 @@ const IndexContent = () => {
         observer.observe(section);
       });
 
+      // Handle resize events to update threshold
+      const handleResize = () => {
+        // Disconnect current observer
+        observer.disconnect();
+        
+        // Create new observer with updated threshold
+        const newObserverOptions = {
+          threshold: getThreshold(),
+          rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const newObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-fade-in');
+              entry.target.classList.remove('opacity-0', 'translate-y-8');
+            }
+          });
+        }, newObserverOptions);
+        
+        // Re-observe all sections
+        sections.forEach((section) => {
+          newObserver.observe(section);
+        });
+        
+        // Update the observer reference
+        Object.assign(observer, newObserver);
+      };
+
+      window.addEventListener('resize', handleResize);
+
       return () => {
         observer.disconnect();
+        window.removeEventListener('resize', handleResize);
         lenis.destroy();
       };
     };

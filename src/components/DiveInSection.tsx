@@ -11,12 +11,17 @@ const DiveInSection = () => {
         <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-8 md:mb-14 leading-tight">
           Ready to dive into your
           <br className="hidden sm:block" />
-          &nbsp;1000-day journey?
+          &nbsp;reading journey?
         </h2>
         
-        <button className="btn-primary text-lg md:text-xl shadow-2xl">
-          $9.99 on the App Store
-        </button>
+        <div className="flex flex-col justify-center items-center gap-4">
+          <button 
+            className="btn-primary text-base md:text-lg transition-all duration-500 ease-out"
+          >
+            $9.99 on the App Store
+          </button>
+          <p className="text-sm text-muted-foreground">Available in the U.S. only.</p>
+        </div>
       </div>
     </section>
   );

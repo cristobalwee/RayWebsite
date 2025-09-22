@@ -170,7 +170,7 @@ const ReadingThumbnail: React.FC<ReadingThumbnailProps> = ({
     
     // Adjust positioning to account for decorative elements and stripes
     const topOffset = 'top-0'; // Space for decorative elements
-    const padding = reducedPadding ? 'p-3' : 'p-3.5';
+    const padding = reducedPadding ? 'p-2.5' : 'p-3';
     const hasBottomGradient = style.hasDecorative === 'bottom-gradient';
     const bottomOffset = hasBottomGradient ? 'bottom-16' : 'bottom-0';
     
@@ -292,7 +292,7 @@ const ReadingThumbnail: React.FC<ReadingThumbnailProps> = ({
         {title && author ? (
           <div className="flex flex-col">
             <h6 
-              className="text-base font-semibold leading-tight mb-1 mr-2 max-w-full break-words"
+              className={`text-base font-semibold leading-tight mb-1 max-w-full break-words ${style.textPosition === 'top' ? 'mr-3' : ''}`}
               style={{ 
                 color: style.textColor,
                 fontSize: '12px',
@@ -321,7 +321,7 @@ const ReadingThumbnail: React.FC<ReadingThumbnailProps> = ({
         {style.hasDecorative === 'bottom-columns' && renderDecorative()}
       </div>
       <div className="absolute top-2 right-2 bg-[#EFEFEF] flex justify-center items-center rounded-full h-[14px] w-[14px] text-[#111111]">
-        <p className="logo text-[7px] text-center">R<span className="text-[#C6698B]">.</span></p>
+        <p className="logo text-[6px] text-center">R<span className="text-[#C6698B]">.</span></p>
       </div>
     </div>
   );

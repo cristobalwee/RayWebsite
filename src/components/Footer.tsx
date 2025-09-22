@@ -32,7 +32,7 @@ const Footer = () => {
               </div>
 
               <div className="space-y-2 md:space-y-3">
-                <a href="mailto:hellothere@cristobalgrana.me" target="_blank" rel="noopener noreferrer" className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 text-sm md:text-base">
+                <a href="mailto:hello@readray.app" target="_blank" rel="noopener noreferrer" className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 text-sm md:text-base">
                   Contact
                 </a>
                 <a href="https://cristobalgrana.me/" target="_blank" rel="noopener noreferrer" className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 text-sm md:text-base">

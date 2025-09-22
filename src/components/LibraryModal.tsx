@@ -143,7 +143,7 @@ const LibraryModal = ({ isOpen, onClose }: LibraryModalProps) => {
                     label={reading.label}
                     title={reading.title}
                     author={reading.author}
-                    className="w-full max-w-[120px] md:max-w-[130px]"
+                    className="w-full max-w-[110px] md:max-w-[120px]"
                   />
                 </div>
                 <div className="p-3 md:p-5">

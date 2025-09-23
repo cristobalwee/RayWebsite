@@ -18,7 +18,7 @@ const FeaturesSection = () => {
             <p className="text-lg w-full md:text-xl mb-4 md:mb-6 max-w-3xl leading-tight">
               No pressure to finish in one sitting, you can always pick up where you left off.
             </p>
-            <div className="relative max-h-[350px] md:max-h-[300px] min-w-[180px] px-4">
+            <div className="relative max-h-[350px] md:max-h-[300px] min-w-[180px] px-4 max-w-[340px]">
               {/* Phone mockup */}
               <img 
                 src="/autosave.webp" 
@@ -34,7 +34,7 @@ const FeaturesSection = () => {
             <p className="text-lg w-full md:text-xl mb-4 md:mb-6 max-w-3xl leading-tight">
               Save the readings that strike you and create your own anthology of favorites.
             </p>
-            <div className="relative max-h-[350px] md:max-h-[300px] min-w-[180px] px-4">
+            <div className="relative max-h-[350px] md:max-h-[300px] min-w-[180px] px-4 max-w-[340px]">
               {/* Phone mockup */}
               <img 
                 src="/bookmarks.webp" 
@@ -50,7 +50,7 @@ const FeaturesSection = () => {
             <p className="text-lg w-full md:text-xl mb-4 md:mb-6 max-w-3xl leading-tight">
               Great literature is meant to be shared. Inspire someone else's reading journey.
             </p>
-            <div className="relative max-h-[350px] md:max-h-[300px] min-w-[180px] px-4">
+            <div className="relative max-h-[350px] md:max-h-[300px] min-w-[180px] px-4 max-w-[340px]">
               {/* Phone mockup */}
               <img 
                 src="/share.webp" 

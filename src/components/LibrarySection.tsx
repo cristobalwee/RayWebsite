@@ -27,7 +27,7 @@ const LibrarySection = () => {
               </button>
             </div>
 
-            <div className="relative max-h-[350px] md:max-h-[200px] min-w-[230px]">
+            <div className="relative max-h-[350px] md:max-h-[200px] min-w-[230px] max-w-[380px]">
               {/* Phone mockup */}
               <img 
                 src="/vault.webp" 

@@ -13,6 +13,20 @@ export const READINGS = [
     label: "AMERICAN_REGIONAL"
   },
   {
+    id: '31',
+    title: "Modern Fiction",
+    author: "Virginia Woolf",
+    category: "Essays",
+    label: "MODERN_FICTION"
+  },
+  {
+    id: '34',
+    title: "A Society",
+    author: "Virginia Woolf",
+    category: "Short_stories",
+    label: "MODERN_FICTION"
+  },
+  {
     id: '2',
     title: 'The Yellow Wallpaper',
     author: 'Charlotte Perkins Gilman',
@@ -34,6 +48,13 @@ export const READINGS = [
     label: "AMERICAN_LITERARY"
   },
   {
+    id: '36',
+    title: "Fall of the House of Usher",
+    author: "Edgar Allan Poe",
+    category: "Short_stories",
+    label: "DARK_TALES"
+  },
+  {
     id: '5',
     title: 'The Gift of the Magi',
     author: 'O. Henry',
@@ -46,13 +67,6 @@ export const READINGS = [
     author: 'Anton Chekhov',
     category: 'Short_stories',
     label: "VICTORIAN_SOCIAL"
-  },
-  {
-    id: '7',
-    title: 'To Build a Fire',
-    author: 'Jack London',
-    category: 'Short_stories',
-    label: "EARLY_MODERN"
   },
   {
     id: '8',
@@ -75,6 +89,13 @@ export const READINGS = [
     category: 'Short_stories',
     label: "AMERICAN_REGIONAL"
   },
+  {
+    id: '7',
+    title: 'To Build a Fire',
+    author: 'Jack London',
+    category: 'Short_stories',
+    label: "EARLY_MODERN"
+  },
   // Poems
   {
     id: '11',
@@ -96,13 +117,6 @@ export const READINGS = [
     author: 'Robert Frost',
     category: 'Poems',
     label: "EARLY_MODERN"
-  },
-  {
-    id: '14',
-    title: 'Stopping by Woods on a Snowy Evening',
-    author: 'Robert Frost',
-    category: 'Poems',
-    label: "NATURE_PASTORAL"
   },
   {
     id: '15',
@@ -197,18 +211,11 @@ export const READINGS = [
     label: "AMERICAN_REGIONAL"
   },
   {
-    id: '28',
-    title: 'Experience',
-    author: 'Ralph Waldo Emerson',
-    category: 'Essays',
-    label: "AMERICAN_TRANSCENDENTAL"
-  },
-  {
     id: '29',
-    title: 'The Way to Wealth',
-    author: 'Benjamin Franklin',
-    category: 'Essays',
-    label: "ENLIGHTENMENT_FORMAL"
+    title: "Zero Hour",
+    author: "Ray Bradbury",
+    category: "Short_stories",
+    label: "MODERN_FICTION"
   },
   {
     id: '30',
@@ -216,5 +223,33 @@ export const READINGS = [
     author: 'Francis Bacon',
     category: 'Essays',
     label: "AMERICAN_LITERARY"
+  },
+  {
+    id: '32',
+    title: "The Story of an Hour",
+    author: "Kate Chopin",
+    category: "Short_stories",
+    label: "AMERICAN_REGIONAL"
+  },
+  {
+    id: '33',
+    title: "A Bird Came Down the Walk",
+    author: "Emily Dickinson",
+    category: "Poems",
+    label: "NATURE_PASTORAL"
+  },
+  {
+    id: '35',
+    title: "On Political Secrecy",
+    author: "G.K. Chesterton",
+    category: "Essays",
+    label: "EARLY_MODERN"
+  },
+  {
+    id: '37',
+    title: "The Monkey's Paw",
+    author: "W.W. Jacobs",
+    category: "Short_stories",
+    label: "DARK_TALES"
   },
 ];

@@ -46,6 +46,14 @@ const LABEL_STYLES: Record<string, LabelStyle> = {
     textAlign: 'left' as const,
     textPosition: 'bottom',
   },
+
+  'MODERN_FICTION': {
+    background: 'linear-gradient(150deg, #C28C5E -18.94%, #42556D 56.29%, #434556 127.31%)',
+    backgroundColor: '#541E79',
+    textColor: '#FFFFFF',
+    textAlign: 'left' as const,
+    textPosition: 'bottom',
+  },
   
   // VICTORIAN_POETRY - Elegant three-color linear gradient
   'VICTORIAN_POETRY': {
@@ -112,6 +120,14 @@ const LABEL_STYLES: Record<string, LabelStyle> = {
     textColor: '#FFFFFF',
     textAlign: 'left' as const,
     textPosition: 'top',
+  },
+
+  'DARK_TALES': {
+    background: '#000',
+    backgroundColor: '#000',
+    textColor: '#FFFFFF',
+    textAlign: 'left' as const,
+    textPosition: 'bottom',
   },
   
   // EARLY_MODERN - White background with 3x3 grid

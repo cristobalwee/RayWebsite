@@ -26,7 +26,7 @@ const Footer = () => {
                 <a onClick={() => lenisRef.current.scrollTo('#library')} className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 cursor-pointer text-sm md:text-base">
                   Preview the Vault
                 </a>
-                <a href="#" className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 text-sm md:text-base">
+                <a href="https://apps.apple.com/us/app/ray-one-reading-a-day/id6747955197" target="_blank" rel="noopener noreferrer" className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 text-sm md:text-base">
                   Get the App
                 </a>
               </div>

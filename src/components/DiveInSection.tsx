@@ -15,11 +15,13 @@ const DiveInSection = () => {
         </h2>
         
         <div className="flex flex-col justify-center items-center gap-4">
-          <button 
-            className="btn-primary text-base md:text-lg transition-all duration-500 ease-out"
-          >
-            $9.99 on the App Store
-          </button>
+          <a href="https://apps.apple.com/us/app/ray-one-reading-a-day/id6747955197" target="_blank" rel="noopener noreferrer">
+            <button 
+              className="btn-primary text-base md:text-lg transition-all duration-500 ease-out"
+            >
+              $9.99 on the App Store
+            </button>
+          </a>
           <p className="text-sm text-muted-foreground">Available in the U.S. only.</p>
         </div>
       </div>

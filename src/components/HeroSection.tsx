@@ -43,11 +43,13 @@ const HeroSection = () => {
             ? 'opacity-100 translate-y-0 scale-100' 
             : 'opacity-0 translate-y-8 scale-95'
         }`}>
-          <button 
-            className="btn-primary text-base md:text-lg transition-all duration-500 ease-out"
-          >
-            Get the App
-          </button>
+          <a href="https://apps.apple.com/us/app/ray-one-reading-a-day/id6747955197" target="_blank" rel="noopener noreferrer">
+            <button 
+              className="btn-primary text-base md:text-lg transition-all duration-500 ease-out"
+            >
+              Get the App
+            </button>
+          </a>
           <p className="text-sm text-muted-foreground">One-time purchase, $9.99.</p>
         </div>
       </div>

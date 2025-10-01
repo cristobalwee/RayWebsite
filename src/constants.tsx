@@ -1,255 +1,327 @@
 export const CATEGORY_COLORS = {
-  'Poems': '#703738',
-  'Essays': '#486F36',
-  'Short_stories': '#36556F'
+  Poetry: "#703738",
+  Essays: "#486F36",
+  Fiction: "#36556F",
 } as const;
-  
+
+// Generate URL-friendly slug from title
+export const getSlug = (title: string): string => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+};
+
 export const READINGS = [
   {
-    id: '1',
-    title: 'An Occurrence at Owl Creek Bridge',
-    author: 'Ambrose Bierce',
-    category: 'Short_stories',
-    label: "AMERICAN_REGIONAL"
+    title: "An Occurrence at Owl Creek Bridge",
+    author: "Ambrose Bierce",
+    category: "Fiction",
+    label: "AMERICAN_REGIONAL",
+    wordcount: 3731,
+    summary:
+      "A Confederate sympathizer named Peyton Farquhar faces execution by hanging from a railroad bridge during the Civil War. As he stands bound on the bridge, his mind races through memories of his family and his motivations for attempting to sabotage Union infrastructure. The story follows his desperate escape attempt after the rope breaks, plunging him into the creek below. Through vivid sensory details, we experience his struggle to free himself, evade gunfire, and make his way through the wilderness toward home. The narrative builds tension as Farquhar navigates the natural world with heightened awareness, driven by thoughts of his wife and children. The story's structure and perspective create a compelling psychological portrait of a man's final moments and the lengths he will go to survive.",
   },
   {
-    id: '31',
     title: "Modern Fiction",
     author: "Virginia Woolf",
     category: "Essays",
-    label: "MODERN_FICTION"
+    label: "MODERN_FICTION",
+    wordcount: 3213,
+    summary:
+      "Woolf critiques the traditional novel form and advocates for a new approach to fiction that captures the complexity of human consciousness. She argues that modern fiction should focus on the inner life of characters rather than external events, using techniques like stream of consciousness to represent the fluid, ever-changing nature of human thought. The essay establishes key principles of modernist literature and calls for writers to break free from conventional narrative structures.",
   },
   {
-    id: '34',
     title: "A Society",
     author: "Virginia Woolf",
-    category: "Short_stories",
-    label: "MODERN_FICTION"
+    category: "Fiction",
+    label: "MODERN_FICTION",
+    wordcount: 5348,
+    summary:
+      "A satirical story about a group of women who form a society to investigate whether men are fit to govern. They discover that men's achievements are often flawed and their institutions corrupt. The women decide to withhold marriage and reproduction until men prove themselves worthy. Woolf uses humor and irony to critique patriarchal society and question traditional gender roles and power structures.",
   },
   {
-    id: '2',
-    title: 'The Yellow Wallpaper',
-    author: 'Charlotte Perkins Gilman',
-    category: 'Short_stories',
-    label: "VICTORIAN_GOTHIC"
+    title: "The Yellow Wallpaper",
+    author: "Charlotte Perkins Gilman",
+    category: "Fiction",
+    label: "VICTORIAN_GOTHIC",
+    wordcount: 6078,
+    summary:
+      "This groundbreaking story follows a woman who is confined to a room by her physician husband as a treatment for her 'nervous condition.' As she becomes increasingly obsessed with the room's yellow wallpaper, her mental state deteriorates, revealing the damaging effects of the 'rest cure' and patriarchal medical practices. The story explores themes of female oppression, mental illness, and the way that women's experiences were often dismissed or misunderstood by the medical establishment. Gilman's use of unreliable narration and Gothic elements creates a powerful critique of the treatment of women's mental health in the late 19th century, making this a foundational text of feminist literature.",
   },
   {
-    id: '3',
-    title: 'The Open Boat',
-    author: 'Stephen Crane',
-    category: 'Short_stories',
-    label: "EARLY_MODERN"
+    title: "The Open Boat",
+    author: "Stephen Crane",
+    category: "Fiction",
+    label: "EARLY_MODERN",
+    wordcount: 9324,
+    summary:
+      "A powerful story that explores themes of survival, nature, and the relationship between humans and the natural world. Crane's story follows four men stranded in a small boat after their ship sinks, creating a meditation on the human struggle against nature and the ways in which people respond to extreme circumstances. The story's emphasis on the relationship between human will and natural forces reflects Crane's characteristic interest in the ways in which people confront the indifferent power of nature. His treatment of the men's struggle creates a commentary on the nature of human resilience and the limits of human control over the natural world.",
   },
   {
-    id: '4',
-    title: 'Bartleby, the Scrivener',
-    author: 'Herman Melville',
-    category: 'Short_stories',
-    label: "AMERICAN_LITERARY"
+    title: "Bartleby, the Scrivener",
+    author: "Herman Melville",
+    category: "Fiction",
+    label: "AMERICAN_LITERARY",
+    wordcount: 14352,
+    summary:
+      'Bartleby, the Scrivener: A Story of Wall-Street"" by Herman Melville is a short story written in the late 19th century, during the period known as the American Renaissance. The tale presents a legal scrivener who exhibits an unusual form of passive resistance, famously responding to requests with the phrase ""I would prefer not to."" The story explores themes of isolation, the human condition, and the conflicts between individual will and societal expectations. The narrative is told from the perspective of a nameless lawyer, who describes his interactions with Bartleby, a new scrivener who initially demonstrates exceptional diligence but gradually declines to perform any tasks. As the lawyer confronts Bartleby\'s growing refusal to comply with standard office duties, he grapples with feelings of frustration, pity, and confusion. Bartleby\'s presence becomes increasingly unsettling, revealing his profound detachment from the world around him. The story culminates with Bartleby\'s ultimate fate in a prison setting, alluding to deeper existential questions about humanity, purpose, and the impact of societal neglect. Through the surreal interactions between the lawyer and Bartleby, Melville crafts a poignant commentary on the condition of modern life and the plight of the individual within a callous society.',
   },
   {
-    id: '36',
     title: "Fall of the House of Usher",
     author: "Edgar Allan Poe",
-    category: "Short_stories",
-    label: "DARK_TALES"
+    category: "Fiction",
+    label: "DARK_TALES",
+    wordcount: 0,
+    summary: "No summary available",
   },
   {
-    id: '5',
-    title: 'The Gift of the Magi',
-    author: 'O. Henry',
-    category: 'Short_stories',
-    label: "AMERICAN_REGIONAL"
+    title: "The Gift of the Magi",
+    author: "O. Henry",
+    category: "Fiction",
+    label: "AMERICAN_REGIONAL",
+    wordcount: 2057,
+    summary:
+      "O. Henry's most beloved story explores themes of love, sacrifice, and the true meaning of gift-giving through the tale of a young couple who each sell their most prized possession to buy a gift for the other. The story's famous twist ending—where each discovers their gift is now useless—creates a powerful meditation on the nature of true love and the value of selfless giving. O. Henry's characteristic use of irony and his emphasis on the nobility of ordinary people reflect his belief in the essential goodness of human nature and the power of love to transcend material circumstances.",
   },
   {
-    id: '6',
-    title: 'The Bet',
-    author: 'Anton Chekhov',
-    category: 'Short_stories',
-    label: "VICTORIAN_SOCIAL"
+    title: "The Bet",
+    author: "Anton Chekhov",
+    category: "Fiction",
+    label: "VICTORIAN_SOCIAL",
+    wordcount: 2689,
+    summary:
+      "A young lawyer and a banker make a bet: the lawyer will spend fifteen years in solitary confinement for two million rubles. Over the years, the lawyer studies extensively and undergoes profound spiritual transformation. On the eve of his release, he renounces the money and escapes, leaving a note that declares both life and death equally meaningless. The story explores the nature of human existence and the value of material wealth versus spiritual enlightenment.",
   },
   {
-    id: '8',
-    title: 'The Lady, or the Tiger?',
-    author: 'Frank Stockton',
-    category: 'Short_stories',
-    label: "AMERICAN_LITERARY"
+    title: "The Lady, or the Tiger?",
+    author: "Frank Stockton",
+    category: "Fiction",
+    label: "AMERICAN_LITERARY",
+    wordcount: 2699,
+    summary:
+      "A famous short story that presents a moral dilemma: a man must choose between two doors, one hiding a beautiful lady and the other a ferocious tiger. The story ends with an unresolved question, forcing readers to contemplate human nature, jealousy, and the consequences of choice, making it a classic example of open-ended storytelling.",
   },
   {
-    id: '9',
-    title: 'Young Goodman Brown',
-    author: 'Nathaniel Hawthorne',
-    category: 'Short_stories',
-    label: "AMERICAN_TRANSCENDENTAL"
+    title: "Young Goodman Brown",
+    author: "Nathaniel Hawthorne",
+    category: "Fiction",
+    label: "AMERICAN_TRANSCENDENTAL",
+    wordcount: 5229,
+    summary:
+      "At sunset in the town of Salem, Massachusetts, a man named Goodman Brown has just stepped over the threshold of the front door of his house. On his way out, he leans his head back inside to kiss his wife goodbye as she, “aptly” named Faith, leans out toward the street to embrace him. Faith is wearing a cap adorned with pink ribbons that flutter in the wind.",
   },
   {
-    id: '10',
-    title: 'The Furnished Room',
-    author: 'O. Henry',
-    category: 'Short_stories',
-    label: "AMERICAN_REGIONAL"
+    title: "The Furnished Room",
+    author: "O. Henry",
+    category: "Fiction",
+    label: "AMERICAN_REGIONAL",
+    wordcount: 2451,
+    summary:
+      "In the Lower West Side of New York City, the homeless population wanders like ghosts between crumbling buildings. The owners of these buildings rent out furnished rooms to provide temporary housing. One evening, a young man rents a furnished room from a housekeeper. He asks the housekeeper if she has seen a young woman named Eloise Vashner, who left home several months ago to pursue a career in show business. The young man is in love with Eloise and has come to New York to find her. He has been searching for five months without success. To his disappointment, the housekeeper tells him she has not seen Eloise. She then brings him to his room, which is decrepit, musty, and full of moldy furniture. Various stains and marks around the room reveal hints about previous tenants who have stayed there. The young man wonders if the lack of stable housing stirs some resentment in people that causes them to take poor care of their living space.",
   },
   {
-    id: '7',
-    title: 'To Build a Fire',
-    author: 'Jack London',
-    category: 'Short_stories',
-    label: "EARLY_MODERN"
-  },
-  // Poems
-  {
-    id: '11',
-    title: 'The Wild Swans at Coole',
-    author: 'W.B. Yeats',
-    category: 'Poems',
-    label: "NATURE_PASTORAL"
+    title: "To Build a Fire",
+    author: "Jack London",
+    category: "Fiction",
+    label: "EARLY_MODERN",
+    wordcount: 7081,
+    summary:
+      "A powerful story that explores themes of survival, nature, and the relationship between human knowledge and natural forces. London's story follows a man who attempts to survive in the extreme cold of the Yukon, creating a meditation on the relationship between human will and the indifferent power of nature. The story's emphasis on the relationship between human knowledge and natural forces reflects London's characteristic interest in the ways in which people confront the natural world and the limits of human control over natural circumstances. His treatment of the man's struggle creates a commentary on the nature of human resilience and the power of the natural world.",
   },
   {
-    id: '12',
-    title: 'Dover Beach',
-    author: 'Matthew Arnold',
-    category: 'Poems',
-    label: "VICTORIAN_POETRY"
+    title: "The Wild Swans at Coole",
+    author: "W.B. Yeats",
+    category: "Poetry",
+    label: "NATURE_PASTORAL",
+    wordcount: 176,
+    summary:
+      "A poignant meditation on aging and the passage of time, set against the eternal beauty of nature. The speaker returns to Coole Park after nineteen years, finding the same fifty-nine swans still graceful and passionate. While the swans remain unchanged—their hearts never growing old—the speaker feels the weight of years and change. The poem captures the bittersweet realization that beauty and vitality persist in nature even as human life moves inexorably toward decline. Yeats masterfully contrasts the speaker's growing weariness with the swans' undiminished energy and mystery.",
   },
   {
-    id: '13',
-    title: 'The Road Not Taken',
-    author: 'Robert Frost',
-    category: 'Poems',
-    label: "EARLY_MODERN"
+    title: "Dover Beach",
+    author: "Matthew Arnold",
+    category: "Poetry",
+    label: "VICTORIAN_POETRY",
+    wordcount: 258,
+    summary:
+      "The poem’s speaker, considered to be Matthew Arnold himself, begins by describing a calm and quiet sea out in the English Channel. He stands on the Dover coast and looks across to France, where a small light can be seen briefly and then vanishes. This light represents the diminishing faith of the English people and the world around them. Throughout this poem, the speaker/Arnold crafts an image of the sea receding and returning to land with the world’s faith as it changes throughout time. At this point in time, though, the sea is not returning. It is receding farther out into the strait. ",
   },
   {
-    id: '15',
-    title: 'Because I could not stop for Death',
-    author: 'Emily Dickinson',
-    category: 'Poems',
-    label: "METAPHYSICAL_RELIGIOUS"
+    title: "The Road Not Taken",
+    author: "Robert Frost",
+    category: "Poetry",
+    label: "EARLY_MODERN",
+    wordcount: 144,
+    summary:
+      'The book provides an exploration of the Gullah culture and dialect, showcasing the lives, traditions, and storytelling traditions of African Americans along the Carolina coast. Through the characters and anecdotes presented, it offers a rich insight into the unique social fabric and historical context of this community. The opening of the book sets the stage with a foreword that delves into the history of the Gullah people, detailing their origins and the development of their distinctive dialect. The first story, ""Noblesse Oblige,"" introduces Joe Fields, a humorous and proud character who boasts about his former master\'s lineage while navigating the realities of his present life. The narrative intertwines themes of pride, identity, and the lingering effects of slavery, as Joe\'s tales reveal both his admiration and the absurdity of his circumstances. This introductory section draws readers into the world of the Gullah, blending rich cultural history and vibrant storytelling.',
   },
   {
-    id: '16',
-    title: 'Ozymandias',
-    author: 'Percy Bysshe Shelley',
-    category: 'Poems',
-    label: "ROMANTIC_POETRY"
+    title: "Because I could not stop for Death",
+    author: "Emily Dickinson",
+    category: "Poetry",
+    label: "METAPHYSICAL_RELIGIOUS",
+    wordcount: 107,
+    summary:
+      "Emily Dickinson's 'Because I could not stop for Death' is a masterful meditation on mortality that personifies death as a gentleman caller taking the speaker on a carriage ride through life and into eternity. Dickinson's use of personification and extended metaphor creates a gentle, almost romantic portrayal of death, challenging traditional fears and anxieties about dying. The poem's structure mirrors the journey it describes, with the speaker passing through different stages of life before reaching the final destination. Dickinson's characteristic use of dashes and unconventional punctuation creates a sense of breathlessness and immediacy, while her imagery of the carriage ride and the final resting place suggests a peaceful acceptance of death. This work exemplifies Dickinson's unique perspective on life's most profound questions and her ability to find beauty in the inevitable.",
   },
   {
-    id: '17',
-    title: 'She Walks in Beauty',
-    author: 'Lord Byron',
-    category: 'Poems',
-    label: "ROMANTIC_POETRY"
+    title: "Ozymandias",
+    author: "Percy Bysshe Shelley",
+    category: "Poetry",
+    label: "ROMANTIC_POETRY",
+    wordcount: 113,
+    summary:
+      "The story revolves around an archaeological and military expedition to a long-dead planet, where the characters grapple with the tension between scientific inquiry and military practicality. As they unearth remnants of an ancient civilization, their quest for knowledge becomes entwined with the implications of potentially dangerous discoveries. The narrative follows a group of archaeologists led by Dr. Leopold and a contingent of military personnel, including Colonel Mattern, as they explore Planet Four. Initially facing skepticism about the planet's value, the archaeologists ultimately discover a sentient robot named Ozymandias, which serves as a guide to the ruins of a once-flourishing civilization known as the Thaiquens. As the team learns from Ozymandias, they uncover the haunting legacy of a race that mastered advanced technology and weapons, raising ethical questions about military use of this newfound knowledge. The story culminates in a poignant reflection on the destructive nature of progress, echoing the sentiments of Shelley's poem about the hubris of past civilizations.",
   },
   {
-    id: '18',
-    title: 'The Tyger',
-    author: 'William Blake',
-    category: 'Poems',
-    label: "METAPHYSICAL_RELIGIOUS"
+    title: "She Walks in Beauty",
+    author: "Lord Byron",
+    category: "Poetry",
+    label: "ROMANTIC_POETRY",
+    wordcount: 123,
+    summary:
+      "The speaker compares a beautiful woman—who is walking—to a clear night sky full of bright stars. The finest light and darkness come together in harmony in this woman's appearance, particularly within her eyes. This gentle and delicate play of light is heavenly—indeed, heaven usually refuses to grant this supernatural light to the showy daytime. A touch more shade or even one ray of light would have greatly diminished the woman's beauty. This beauty, which is hard to put into words, shows itself in every strand of the woman's hair, and gently falls on her face. Her sweet, angelic emotions play out on her face, revealing how pure and precious this woman is. On the woman's cheek and forehead—softly and calmly, but noticeably—appear winning smiles and a glowing skin tone. These features reveal that the woman spends her days virtuously, that she possesses a peaceful mind, and that she has an innocent, loving heart.",
   },
   {
-    id: '19',
-    title: 'Crossing the Bar',
-    author: 'Alfred, Lord Tennyson',
-    category: 'Poems',
-    label: "VICTORIAN_POETRY"
+    title: "The Tyger",
+    author: "William Blake",
+    category: "Poetry",
+    label: "METAPHYSICAL_RELIGIOUS",
+    wordcount: 143,
+    summary:
+      "The speaker directly addresses a tiger, imagining its bright flashes of color in the dark night-time forest. The speaker asks which immortal being could possibly have created the tiger's fearsome beauty. The speaker wonders in which far-off depths or skies the tiger's fiery eyes were made. Did the tiger's creator have wings, and whose hand would be daring enough to create the tiger? The speaker imagines the kind of effort and skill that must have gone into creating the tiger, wondering who would be strong enough to build the tiger's muscular body. Whose hands and feet were the ones that made the tiger's heart start beating? The speaker wonders about the tools the tiger's creator must have used, imagining that the tiger's brain was created in a forge. What terrifying being would be so daring as to create the tiger? The speaker mentions a time when the stars gave up their weapons and rained their tears on heaven. At this time, wonders the speaker, did the creator look at the tiger and smile at his accomplishment? And was the tiger made by the same creator who made the lamb? The speaker addresses the tiger again, this time wondering not just who could create this fearsome beast—but who would dare.",
   },
   {
-    id: '20',
-    title: 'Fire and Ice',
-    author: 'Robert Frost',
-    category: 'Poems',
-    label: "NATURE_PASTORAL"
-  },
-  // Essays
-  {
-    id: '21',
-    title: 'Civil Disobedience',
-    author: 'Henry David Thoreau',
-    category: 'Essays',
-    label: "AMERICAN_TRANSCENDENTAL"
+    title: "Crossing the Bar",
+    author: "Alfred, Lord Tennyson",
+    category: "Poetry",
+    label: "VICTORIAN_POETRY",
+    wordcount: 102,
+    summary:
+      "Alfred, Lord Tennyson's 'Crossing the Bar' is a meditation on death and the afterlife that uses maritime imagery to explore the transition from life to death. The poem describes the speaker's acceptance of his own mortality, using the metaphor of crossing a sandbar to represent the journey from life to death and the hope of meeting his 'Pilot' in the afterlife. Tennyson's use of vivid imagery and his exploration of the relationship between life and death create a powerful meditation on the nature of mortality and the human desire for meaning beyond death. The poem's structure and its use of maritime metaphor emphasize the speaker's peaceful acceptance of death, while its philosophical depth invites readers to consider the relationship between faith and mortality. Through this work, Tennyson examines the universal human experience of facing death and the way that faith can provide comfort and meaning in the face of mortality.",
   },
   {
-    id: '22',
-    title: 'On Going a Journey',
-    author: 'William Hazlitt',
-    category: 'Essays',
-    label: "ROMANTIC_PROSE"
+    title: "Fire and Ice",
+    author: "Robert Frost",
+    category: "Poetry",
+    label: "NATURE_PASTORAL",
+    wordcount: 51,
+    summary:
+      "Robert Frost's 'Fire and Ice' is a concise yet profound meditation on the end of the world and human nature. The poem presents two opposing forces—fire and ice—as potential agents of destruction, with fire representing desire and ice symbolizing hatred. Frost's economical use of language and simple structure belies the poem's philosophical depth, as he explores the destructive potential of both passion and indifference. The poem's conversational tone and accessible imagery make complex ideas approachable, while its brevity forces readers to contemplate the weight of each word. Through this deceptively simple poem, Frost examines fundamental questions about human nature and the forces that drive both creation and destruction, suggesting that both extremes can lead to the same catastrophic end.",
   },
   {
-    id: '23',
-    title: 'Self-Reliance',
-    author: 'Ralph Waldo Emerson',
-    category: 'Essays',
-    label: "AMERICAN_TRANSCENDENTAL"
+    title: "Civil Disobedience",
+    author: "Henry David Thoreau",
+    category: "Essays",
+    label: "AMERICAN_TRANSCENDENTAL",
+    wordcount: 9326,
+    summary:
+      "Thoreau's seminal essay advocates for the moral responsibility to resist unjust laws and government actions through nonviolent means. Drawing on his own experience of refusing to pay taxes in protest of slavery and the Mexican-American War, Thoreau explores themes of conscience, individual liberty, and the limits of state authority. The essay has had a profound influence on social and political movements worldwide, inspiring figures such as Gandhi and Martin Luther King Jr. to practice civil disobedience as a form of protest.",
   },
   {
-    id: '24',
-    title: 'Characteristics',
-    author: 'Thomas Carlyle',
-    category: 'Essays',
-    label: "VICTORIAN_SOCIAL"
+    title: "On Going a Journey",
+    author: "William Hazlitt",
+    category: "Essays",
+    label: "ROMANTIC_PROSE",
+    wordcount: 4231,
+    summary:
+      "Hazlitt's essay celebrates the pleasures and benefits of solitary travel, arguing that true enjoyment of a journey requires independence and freedom from social obligations. He explores how travel can provide opportunities for reflection, self-discovery, and appreciation of the natural world. The work demonstrates Hazlitt's appreciation for solitude and his belief in the importance of personal freedom for intellectual and spiritual growth.",
   },
   {
-    id: '25',
-    title: 'Of Truth',
-    author: 'Francis Bacon',
-    category: 'Essays',
-    label: "VICTORIAN_GOTHIC"
+    title: "Self-Reliance",
+    author: "Ralph Waldo Emerson",
+    category: "Essays",
+    label: "AMERICAN_TRANSCENDENTAL",
+    wordcount: 10045,
+    summary:
+      "This essay argues for the importance of individual intuition and self-trust over conformity to social expectations and traditional authority. Emerson explores themes of authenticity, nonconformity, and the power of individual genius. Through his examination of how society pressures individuals to conform, Emerson examines how true greatness comes from following one's own inner voice rather than external dictates. The essay serves as a powerful defense of individualism and a call to trust one's own judgment and creative impulses, even when they conflict with conventional wisdom or social norms.",
   },
   {
-    id: '26',
-    title: 'Style',
-    author: 'Thomas De Quincey',
-    category: 'Essays',
-    label: "ROMANTIC_PROSE"
+    title: "Characteristics",
+    author: "Thomas Carlyle",
+    category: "Essays",
+    label: "VICTORIAN_SOCIAL",
+    wordcount: 1923,
+    summary:
+      "Characteristics by Thomas Carlyle is a critical preface to his work on clothing and philosophy, written in his characteristic dense, philosophical style. The piece introduces Professor Teufelsdröckh, a fictional German philosopher whose work on clothes serves as a metaphor for deeper metaphysical truths. Carlyle presents Teufelsdröckh as a brilliant but flawed thinker—possessing profound insights and poetic vigor alongside frustrating prolixity and disorganization. The professor's transcendental philosophy views all material things as spirit, leading to both illuminating perspectives and bewildering complexity. While acknowledging the work's structural weaknesses and uneven quality, Carlyle defends its intellectual merit, suggesting that despite its flaws, it opens \"new mine-shafts\" for philosophical exploration. The piece ultimately serves as both a self-aware critique and a defense of philosophical works that, despite their imperfections, challenge readers to deeper self-reflection and intellectual engagement.",
   },
   {
-    id: '27',
-    title: 'On Familiar Style',
-    author: 'William Hazlitt',
-    category: 'Essays',
-    label: "AMERICAN_REGIONAL"
+    title: "Of Truth",
+    author: "Francis Bacon",
+    category: "Essays",
+    label: "VICTORIAN_GOTHIC",
+    wordcount: 839,
+    summary:
+      "Bacon's essay examines the nature of truth and the human tendency to prefer lies and illusions. He argues that truth is the highest good and that the pursuit of truth is essential for human dignity and progress. The work demonstrates Bacon's commitment to empirical investigation and his belief in the importance of truth-seeking for human advancement.",
   },
   {
-    id: '29',
+    title: "Style",
+    author: "Thomas De Quincey",
+    category: "Essays",
+    label: "ROMANTIC_PROSE",
+    wordcount: 0,
+    summary: "No summary available",
+  },
+  {
+    title: "On Familiar Style",
+    author: "William Hazlitt",
+    category: "Essays",
+    label: "AMERICAN_REGIONAL",
+    wordcount: 2703,
+    summary:
+      "In this essay, Hazlitt advocates for a natural, conversational style of writing that reflects the way people actually think and speak. He argues against artificial, pompous language and in favor of clarity, directness, and authenticity. The work demonstrates Hazlitt's commitment to accessible, engaging prose and his belief that good writing should connect with readers on a personal level.",
+  },
+  {
     title: "Zero Hour",
     author: "Ray Bradbury",
-    category: "Short_stories",
-    label: "MODERN_FICTION"
+    category: "Fiction",
+    label: "MODERN_FICTION",
+    wordcount: 3064,
+    summary:
+      'A seemingly innocent children\'s game of "Invasion" unfolds on a peaceful suburban street where seven-year-old Mink leads her friends in elaborate preparations. While adults dismiss it as typical childhood imagination, the children work with mysterious equipment and speak of someone named "Drill" who promises them freedom from baths and bedtime rules. As the afternoon progresses toward "zero hour," the game takes on an increasingly unsettling quality, with strange yo-yos that vanish and reappear, and children who seem to be communicating with invisible forces. The story builds tension through the contrast between the adults\' obliviousness and the children\'s deadly serious preparations, creating an atmosphere of creeping dread that culminates in an explosive revelation about the true nature of their play.',
   },
   {
-    id: '30',
-    title: 'Of Friendship',
-    author: 'Francis Bacon',
-    category: 'Essays',
-    label: "AMERICAN_LITERARY"
+    title: "Of Friendship",
+    author: "Francis Bacon",
+    category: "Essays",
+    label: "AMERICAN_LITERARY",
+    wordcount: 0,
+    summary: "No summary available",
   },
   {
-    id: '32',
     title: "The Story of an Hour",
     author: "Kate Chopin",
-    category: "Short_stories",
-    label: "AMERICAN_REGIONAL"
+    category: "Fiction",
+    label: "AMERICAN_REGIONAL",
+    wordcount: 1017,
+    summary:
+      "A woman receives news of her husband's death in a train accident. Initially overwhelmed by grief, she retreats to her room where she experiences an unexpected emotional transformation. As she gazes out her window at the spring day, she begins to feel a sense of liberation and freedom that she had never known in her marriage. The story explores the complex emotions of a woman who discovers her own identity and independence in the wake of what she believes is her husband's death. Through vivid imagery and psychological insight, the narrative examines themes of personal freedom, societal expectations, and the hidden desires that can emerge in moments of profound change. The story's power lies in its exploration of the inner life of a woman who finds herself unexpectedly free to live for herself.",
   },
   {
-    id: '33',
     title: "A Bird Came Down the Walk",
     author: "Emily Dickinson",
-    category: "Poems",
-    label: "NATURE_PASTORAL"
+    category: "Poetry",
+    label: "NATURE_PASTORAL",
+    wordcount: 0,
+    summary: "No summary available",
   },
   {
-    id: '35',
     title: "On Political Secrecy",
     author: "G.K. Chesterton",
     category: "Essays",
-    label: "EARLY_MODERN"
+    label: "EARLY_MODERN",
+    wordcount: 1837,
+    summary:
+      "This essay examines the nature of political secrecy by first establishing three legitimate categories of human privacy: secrets meant to be revealed (like mystery stories), secrets everyone knows but doesn't discuss (like intimate matters), and secrets too personal and fleeting to explain (like whimsical preferences). The author then applies this framework to political finance secrecy, particularly the concealment of party funds and peerage purchases. Through systematic analysis, he demonstrates that political secrecy fits none of these legitimate categories—it is not kept to be revealed, not a common human secret, and not a trivial personal matter. Instead, it represents an illegitimate form of occult government where power operates through hidden financial transactions that violate democratic transparency. The essay concludes that England has created a system of priestcraft without priests, where political power is concentrated in the hands of those who can afford to buy influence through secret channels.",
   },
   {
-    id: '37',
     title: "The Monkey's Paw",
     author: "W.W. Jacobs",
-    category: "Short_stories",
-    label: "DARK_TALES"
+    category: "Fiction",
+    label: "DARK_TALES",
+    wordcount: 3937,
+    summary:
+      "A family receives a magical monkey's paw that grants three wishes, but each wish comes with terrible consequences. When they wish for money, their son dies in an accident and they receive compensation. Their second wish to bring him back results in a horrifying resurrection. The story explores themes of fate, the consequences of tampering with natural order, and the human tendency to desire more than we should have.",
   },
 ];

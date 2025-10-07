@@ -1,10 +1,26 @@
 import { useLenis } from "../contexts/LenisContext";
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { usePageTransition } from "../contexts/PageTransitionContext";
 import PrivacyPolicyModal from "./PrivacyPolicyModal";
 
 const Footer = () => {
   const { lenisRef } = useLenis();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { startTransition } = usePageTransition();
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+
+  const handleSectionClick = async (section: string) => {
+    if (location.pathname === '/') {
+      // On landing page, scroll to section
+      lenisRef.current.scrollTo(section);
+    } else {
+      // On other pages, navigate to landing page with hash
+      await startTransition();
+      navigate(`/${section}`);
+    }
+  };
 
   return (
     <>
@@ -20,10 +36,10 @@ const Footer = () => {
             
             <div className="flex flex-col sm:flex-row items-start justify-between gap-8 sm:gap-16 md:gap-64 w-full md:w-auto">
               <div className="space-y-2 md:space-y-3">
-                <a onClick={() => lenisRef.current.scrollTo('#about')} className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 cursor-pointer text-sm md:text-base">
+                <a onClick={() => handleSectionClick('#about')} className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 cursor-pointer text-sm md:text-base">
                   Why Ray?
                 </a>
-                <a onClick={() => lenisRef.current.scrollTo('#library')} className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 cursor-pointer text-sm md:text-base">
+                <a onClick={() => handleSectionClick('#library')} className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 cursor-pointer text-sm md:text-base">
                   Preview the Vault
                 </a>
                 <a href="https://apps.apple.com/us/app/ray-one-reading-a-day/id6747955197" target="_blank" rel="noopener noreferrer" className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 text-sm md:text-base">

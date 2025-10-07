@@ -1,14 +1,21 @@
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState, useCallback, useRef } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { LenisProvider, useLenis } from "../contexts/LenisContext";
 import { usePageTransition } from "../contexts/PageTransitionContext";
 import { Bookmark, Share, ArrowLeft } from "lucide-react";
 import { READINGS, getSlug } from "../constants";
 import { loadReading } from "../utils/readingLoader";
+import {
+  loadPreviewReading,
+  PreviewReadingData,
+} from "../utils/previewReadingLoader";
+import TruncatedOverlay from "../components/TruncatedOverlay";
+import CompletionOverlay from "../components/CompletionOverlay";
 
 const ReadingDetailContent = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const { lenisRef } = useLenis();
   const { startTransition } = usePageTransition();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,8 +23,23 @@ const ReadingDetailContent = () => {
   const [content, setContent] = useState<string[]>([]);
   const [isLoadingContent, setIsLoadingContent] = useState(true);
   const [contentError, setContentError] = useState<string | null>(null);
+  const [previewData, setPreviewData] = useState<PreviewReadingData | null>(
+    null,
+  );
+  const [isScrollLocked, setIsScrollLocked] = useState(false);
+  const [toast, setToast] = useState<{
+    message: string;
+    position: { top: number; left: number };
+    isClosing: boolean;
+  } | null>(null);
+  const bookmarkButtonRef = useRef<HTMLButtonElement>(null);
+  const shareButtonRef = useRef<HTMLButtonElement>(null);
 
   const reading = READINGS.find((r) => getSlug(r.title) === id);
+
+  // Detect if we're in preview mode
+  const isPreviewMode = location.pathname.startsWith("/preview/");
+  const isFiction = reading.category === "Fiction";
 
   useEffect(() => {
     const initLenis = async () => {
@@ -61,8 +83,20 @@ const ReadingDetailContent = () => {
       setContentError(null);
 
       try {
-        const paragraphs = await loadReading(reading.title);
-        setContent(paragraphs);
+        if (isPreviewMode) {
+          // Load preview content with truncation logic
+          const data = await loadPreviewReading(
+            reading.title,
+            reading.wordcount,
+          );
+          setContent(data.content);
+          setPreviewData(data);
+        } else {
+          // Load full content for non-preview routes
+          const paragraphs = await loadReading(reading.title);
+          setContent(paragraphs);
+          setPreviewData(null);
+        }
       } catch (error) {
         setContentError("Failed to load reading content");
         console.error("Error loading content:", error);
@@ -72,21 +106,104 @@ const ReadingDetailContent = () => {
     };
 
     fetchContent();
-  }, [reading]);
+  }, [reading, isPreviewMode]);
 
-  // Track scroll progress
+  // Track scroll progress with virtual calculation for truncated readings
   useEffect(() => {
     const handleScroll = () => {
       const scrollHeight =
         document.documentElement.scrollHeight - window.innerHeight;
       const scrolled = window.scrollY;
-      const progress = Math.min((scrolled / scrollHeight) * 100, 100);
-      setScrollProgress(progress);
+
+      if (previewData?.isTruncated) {
+        // For truncated readings, calculate progress based on virtual full content
+        // When user reaches bottom of actual content, that should equal 40%
+        const virtualFullHeight = scrollHeight / 0.4; // Total height if full content
+        const virtualScrollHeight = virtualFullHeight - window.innerHeight;
+        const progress = Math.min(
+          (scrolled / virtualScrollHeight) * 100,
+          previewData.progressCap,
+        );
+        setScrollProgress(progress);
+      } else {
+        // Normal progress calculation for full readings
+        const progress = Math.min((scrolled / scrollHeight) * 100, 100);
+        setScrollProgress(progress);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [previewData]);
+
+  // Lock scroll when paywall is reached
+  const handleScrollLock = useCallback(() => {
+    if (isScrollLocked) return;
+
+    setIsScrollLocked(true);
+  }, [isScrollLocked]);
+
+  const showToast = (
+    message: string,
+    buttonRef: React.RefObject<HTMLButtonElement>,
+  ) => {
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+
+      // Calculate initial centered position
+      let leftPosition = rect.left + rect.width / 2;
+
+      // Estimate toast width (rough calculation based on message length)
+      const estimatedToastWidth = Math.max(200, message.length * 8);
+      const halfToastWidth = estimatedToastWidth / 2;
+
+      // Check right edge and adjust if needed
+      const viewportWidth = window.innerWidth;
+      const rightEdge = leftPosition + halfToastWidth;
+      const padding = 16; // 16px padding from edge
+
+      if (rightEdge > viewportWidth - padding) {
+        leftPosition = viewportWidth - halfToastWidth - padding;
+      }
+
+      // Check left edge
+      if (leftPosition - halfToastWidth < padding) {
+        leftPosition = halfToastWidth + padding;
+      }
+
+      setToast({
+        message,
+        position: {
+          top: rect.bottom + 8,
+          left: leftPosition,
+        },
+        isClosing: false,
+      });
+
+      // Start closing animation before removing
+      setTimeout(() => {
+        setToast((prev) => (prev ? { ...prev, isClosing: true } : null));
+      }, 2500);
+
+      // Remove toast after exit animation completes
+      setTimeout(() => {
+        setToast(null);
+      }, 3200);
+    }
+  };
+
+  const handleBookmarkClick = () => {
+    showToast("Bookmarks are disabled in preview mode", bookmarkButtonRef);
+  };
+
+  const handleShareClick = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast("Copied share link to clipboard!", shareButtonRef);
+    } catch (error) {
+      console.error("Failed to copy to clipboard:", error);
+    }
+  };
 
   const handleBack = async () => {
     await startTransition();
@@ -119,10 +236,18 @@ const ReadingDetailContent = () => {
           </button>
 
           <div className="flex items-center gap-3">
-            <button className="p-3.5 hover:bg-[#2A2A2A] bg-[#232323] rounded-full transition-colors">
+            <button
+              ref={bookmarkButtonRef}
+              onClick={handleBookmarkClick}
+              className="p-3.5 hover:bg-[#2A2A2A] bg-[#232323] rounded-full transition-colors"
+            >
               <Bookmark size={20} />
             </button>
-            <button className="p-3.5 hover:bg-[#2A2A2A] bg-[#232323] rounded-full transition-colors">
+            <button
+              ref={shareButtonRef}
+              onClick={handleShareClick}
+              className="p-3.5 hover:bg-[#2A2A2A] bg-[#232323] rounded-full transition-colors"
+            >
               <Share size={20} />
             </button>
           </div>
@@ -183,13 +308,15 @@ const ReadingDetailContent = () => {
                 }
 
                 return (
-                  <p key={index} className="text-xl md:text-2xl">
+                  <p
+                    key={index}
+                    className={`text-xl md:text-2xl ${isFiction ? "" : "mb-4"}`}
+                  >
                     {paragraph.split("\n").map((line, lineIndex) => {
-                      const isFiction = reading.category === "Fiction";
                       if (line === "\r" && isFiction) return null;
 
                       return (
-                        <span className="block" key={lineIndex}>
+                        <span className="block min-h-[1rem]" key={lineIndex}>
                           {isFiction && <>&emsp;</>}
                           {line}
                         </span>
@@ -199,20 +326,23 @@ const ReadingDetailContent = () => {
                 );
               })}
 
-              <div className="mt-12 p-6 bg-card border border-border rounded-xl">
-                <p className="text-sm text-muted-foreground italic">
-                  This is a preview with limited content. The full app includes
-                  complete readings with proper formatting, contextual notes,
-                  and audio narration.
-                </p>
-              </div>
+              {previewData?.isTruncated && (
+                <TruncatedOverlay
+                  scrollProgress={scrollProgress}
+                  onScrollLock={handleScrollLock}
+                  title={reading.title}
+                />
+              )}
+
+              {/* Completion overlay for short, full readings */}
+              {previewData && !previewData.isTruncated && <CompletionOverlay />}
             </>
           )}
         </div>
       </main>
 
       {/* Fixed bottom progress indicator */}
-      <div className="flex flex-col fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-[#313131] rounded-full px-7 pb-4 pt-3 gap-1.5">
+      <div className="flex flex-col fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-[#313131] rounded-full px-7 pb-4 pt-2 gap-1.5">
         <span className="text-lg text-muted-foreground">
           {Math.round(scrollProgress)}% Completed
         </span>
@@ -223,6 +353,21 @@ const ReadingDetailContent = () => {
           />
         </div>
       </div>
+
+      {/* Toast */}
+      {toast && (
+        <div
+          className={`fixed z-[60] transform -translate-x-1/2 px-4 py-2.5 bg-[#313131] text-white rounded-lg shadow-lg text-lg whitespace-nowrap transition-all duration-300 ease-out ${
+            toast.isClosing ? "animate-toast-exit" : "animate-toast"
+          }`}
+          style={{
+            top: `${toast.position.top}px`,
+            left: `${toast.position.left}px`,
+          }}
+        >
+          {toast.message}
+        </div>
+      )}
     </div>
   );
 };

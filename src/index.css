@@ -242,6 +242,32 @@
     }
   }
 
+  .animate-toast {
+    animation: toastSlideIn 0.2s ease-out forwards;
+    opacity: 0;
+    transform: translate(-50%, -8px);
+  }
+
+  @keyframes toastSlideIn {
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  .animate-toast-exit {
+    animation: toastSlideOut 0.2s ease-out forwards;
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  @keyframes toastSlideOut {
+    to {
+      opacity: 0;
+      transform: translate(-50%, -8px);
+    }
+  }
+
   /* Page transition utilities */
   .duration-400 {
     transition-duration: 400ms;

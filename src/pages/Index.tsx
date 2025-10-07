@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
-import Header from '../components/Header';
-import HeroSection from '../components/HeroSection';
-import LibrarySection from '../components/LibrarySection';
-import UISection from '../components/UISection';
-import WhyRaySection from '../components/WhyRaySection';
-import DiveInSection from '../components/DiveInSection';
-import Footer from '../components/Footer';
-import { LenisProvider, useLenis } from '../contexts/LenisContext';
-import FeaturesSection from '../components/FeaturesSection';
+import { useEffect } from "react";
+import Header from "../components/Header";
+import HeroSection from "../components/HeroSection";
+import LibrarySection from "../components/LibrarySection";
+import UISection from "../components/UISection";
+import WhyRaySection from "../components/WhyRaySection";
+import DiveInSection from "../components/DiveInSection";
+import Footer from "../components/Footer";
+import { LenisProvider, useLenis } from "../contexts/LenisContext";
+import FeaturesSection from "../components/FeaturesSection";
 
 const IndexContent = () => {
   const { lenisRef } = useLenis();
@@ -16,8 +16,8 @@ const IndexContent = () => {
     const initLenis = async () => {
       // Reset scroll position to top on page load
       window.scrollTo(0, 0);
-      
-      const Lenis = (await import('@studio-freight/lenis')).default;
+
+      const Lenis = (await import("@studio-freight/lenis")).default;
       const lenis = new Lenis({
         duration: 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -28,6 +28,15 @@ const IndexContent = () => {
 
       // Also reset Lenis scroll position
       lenis.scrollTo(0, { immediate: true });
+
+      // Handle hash navigation from other pages
+      const hash = window.location.hash;
+      if (hash) {
+        // Wait a bit for the page to render, then scroll immediately
+        setTimeout(() => {
+          lenis.scrollTo(hash, { duration: 1.6 });
+        }, 800);
+      }
 
       function raf(time: number) {
         lenis.raf(time);
@@ -53,22 +62,29 @@ const IndexContent = () => {
 
       const observerOptions = {
         threshold: getThreshold(),
-        rootMargin: '0px 0px -100px 0px'
+        rootMargin: "0px 0px -100px 0px",
       };
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
-            entry.target.classList.remove('opacity-0', 'translate-y-8');
+            entry.target.classList.add("animate-fade-in");
+            entry.target.classList.remove("opacity-0", "translate-y-8");
           }
         });
       }, observerOptions);
 
       // Observe all sections
-      const sections = document.querySelectorAll('.reveal-section');
+      const sections = document.querySelectorAll(".reveal-section");
       sections.forEach((section) => {
-        section.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-1000', 'ease-out', 'delay-200');
+        section.classList.add(
+          "opacity-0",
+          "translate-y-8",
+          "transition-all",
+          "duration-1000",
+          "ease-out",
+          "delay-200",
+        );
         observer.observe(section);
       });
 
@@ -76,36 +92,36 @@ const IndexContent = () => {
       const handleResize = () => {
         // Disconnect current observer
         observer.disconnect();
-        
+
         // Create new observer with updated threshold
         const newObserverOptions = {
           threshold: getThreshold(),
-          rootMargin: '0px 0px -100px 0px'
+          rootMargin: "0px 0px -100px 0px",
         };
-        
+
         const newObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('animate-fade-in');
-              entry.target.classList.remove('opacity-0', 'translate-y-8');
+              entry.target.classList.add("animate-fade-in");
+              entry.target.classList.remove("opacity-0", "translate-y-8");
             }
           });
         }, newObserverOptions);
-        
+
         // Re-observe all sections
         sections.forEach((section) => {
           newObserver.observe(section);
         });
-        
+
         // Update the observer reference
         Object.assign(observer, newObserver);
       };
 
-      window.addEventListener('resize', handleResize);
+      window.addEventListener("resize", handleResize);
 
       return () => {
         observer.disconnect();
-        window.removeEventListener('resize', handleResize);
+        window.removeEventListener("resize", handleResize);
         lenis.destroy();
       };
     };

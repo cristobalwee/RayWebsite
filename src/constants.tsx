@@ -12,6 +12,68 @@ export const getSlug = (title: string): string => {
     .replace(/^-|-$/g, "");
 };
 
+export const READING_DAYS = [
+  {
+    title: "Zero Hour",
+    author: "Ray Bradbury"
+  },
+  {
+    title: "The Fall of the House of Usher",
+    author: "Edgar Allan Poe"
+  },
+  {
+    title: "Ode to a Nightingale",
+    author: "John Keats"
+  },
+  {
+    title: "The Lady with the Dog",
+    author: "Anton Chekhov"
+  },
+];
+
+export const VAULT_READINGS = [
+  {
+    title: "The Monkey's Paw",
+    author: "W.W. Jacobs"
+  },
+  {
+    title: "Modern Fiction",
+    author: "Virginia Woolf"
+  },
+  {
+    title: "The Open Boat",
+    author: "Stephen Crane"
+  },
+  {
+    title: "How Much Land Does a Man Need?",
+    author: "Leo Tolstoy"
+  },
+  {
+    title: "Life Without Principle",
+    author: "Henry David Thoreau"
+  },
+  {
+    title: "The Road Not Taken",
+    author: "Robert Frost"
+  },
+  {
+    title: "Sonnet 116",
+    author: "William Shakespeare"
+  },
+  {
+    title: "Goblin Market",
+    author: "Christina Rossetti"
+  },
+  {
+    title: "Hope is the Thing with Feathers",
+    author: "Emily Dickinson"
+  },
+  {
+    title: "She Walks in Beauty",
+    author: "Lord Byron"
+  },
+]
+
 export const READINGS = [
   {
     title: "An Occurrence at Owl Creek Bridge",
@@ -59,21 +121,21 @@ export const READINGS = [
       "A powerful story that explores themes of survival, nature, and the relationship between humans and the natural world. Crane's story follows four men stranded in a small boat after their ship sinks, creating a meditation on the human struggle against nature and the ways in which people respond to extreme circumstances. The story's emphasis on the relationship between human will and natural forces reflects Crane's characteristic interest in the ways in which people confront the indifferent power of nature. His treatment of the men's struggle creates a commentary on the nature of human resilience and the limits of human control over the natural world.",
   },
   {
-    title: "Bartleby, the Scrivener",
-    author: "Herman Melville",
+    title: "How Much Land Does a Man Need?",
+    author: "Leo Tolstoy",
     category: "Fiction",
     label: "AMERICAN_LITERARY",
-    wordcount: 14352,
+    wordcount: 6129,
     summary:
-      'Bartleby, the Scrivener: A Story of Wall-Street"" by Herman Melville is a short story written in the late 19th century, during the period known as the American Renaissance. The tale presents a legal scrivener who exhibits an unusual form of passive resistance, famously responding to requests with the phrase ""I would prefer not to."" The story explores themes of isolation, the human condition, and the conflicts between individual will and societal expectations. The narrative is told from the perspective of a nameless lawyer, who describes his interactions with Bartleby, a new scrivener who initially demonstrates exceptional diligence but gradually declines to perform any tasks. As the lawyer confronts Bartleby\'s growing refusal to comply with standard office duties, he grapples with feelings of frustration, pity, and confusion. Bartleby\'s presence becomes increasingly unsettling, revealing his profound detachment from the world around him. The story culminates with Bartleby\'s ultimate fate in a prison setting, alluding to deeper existential questions about humanity, purpose, and the impact of societal neglect. Through the surreal interactions between the lawyer and Bartleby, Melville crafts a poignant commentary on the condition of modern life and the plight of the individual within a callous society.',
+      "This parable follows Pahom, a peasant who becomes obsessed with acquiring more land, leading to his ultimate downfall. Tolstoy explores themes of greed, ambition, and the destructive nature of materialism. Through Pahom's increasingly desperate quest for land, the story examines how the desire for wealth and property can consume a person's life and lead to spiritual and physical destruction. The narrative serves as a powerful critique of capitalism and a reminder that true happiness cannot be found in material possessions alone.",
   },
   {
-    title: "Fall of the House of Usher",
+    title: "The Fall of the House of Usher",
     author: "Edgar Allan Poe",
     category: "Fiction",
     label: "DARK_TALES",
-    wordcount: 0,
-    summary: "No summary available",
+    wordcount: 7040,
+    summary: "A narrator receives a desperate letter from his childhood friend Roderick Usher, summoning him to the ancient family mansion. Upon arrival, he finds the House of Usher shrouded in an atmosphere of oppressive gloom, with its decaying facade reflected eerily in a dark tarn. Inside, Roderick appears physically and mentally transformed, suffering from acute nervous sensitivity and consumed by mysterious fears about his ancestral home. The narrator learns that Roderick's twin sister Madeline suffers from a strange cataleptical illness. As the story unfolds through nights of reading Gothic tales and listening to Roderick's wild musical improvisations, the narrator becomes increasingly unsettled by the house's supernatural influence and Roderick's deteriorating mental state. This atmospheric masterpiece explores themes of psychological decay, family curses, and the thin boundary between reality and madness, building to a climactic revelation that forever alters both the House of Usher and its inhabitants.",
   },
   {
     title: "The Gift of the Magi",
@@ -85,13 +147,13 @@ export const READINGS = [
       "O. Henry's most beloved story explores themes of love, sacrifice, and the true meaning of gift-giving through the tale of a young couple who each sell their most prized possession to buy a gift for the other. The story's famous twist ending—where each discovers their gift is now useless—creates a powerful meditation on the nature of true love and the value of selfless giving. O. Henry's characteristic use of irony and his emphasis on the nobility of ordinary people reflect his belief in the essential goodness of human nature and the power of love to transcend material circumstances.",
   },
   {
-    title: "The Bet",
+    title: "The Lady with the Dog",
     author: "Anton Chekhov",
     category: "Fiction",
     label: "VICTORIAN_SOCIAL",
-    wordcount: 2689,
+    wordcount: 6611,
     summary:
-      "A young lawyer and a banker make a bet: the lawyer will spend fifteen years in solitary confinement for two million rubles. Over the years, the lawyer studies extensively and undergoes profound spiritual transformation. On the eve of his release, he renounces the money and escapes, leaving a note that declares both life and death equally meaningless. The story explores the nature of human existence and the value of material wealth versus spiritual enlightenment.",
+      "A jaded Moscow banker vacationing in Yalta encounters a mysterious woman walking alone with her white Pomeranian dog. Dmitri Gurov, a serial adulterer who views women with cynical detachment, finds himself unexpectedly drawn to Anna Sergeyevna, a young married woman seeking escape from her provincial life. What begins as another casual seaside affair transforms into something deeper as Gurov discovers feelings he never knew he possessed. Chekhov masterfully explores themes of love, authenticity, and the human capacity for change through this intimate portrait of two people caught between societal expectations and their own desires. The story examines how genuine connection can emerge from the most unlikely circumstances, challenging assumptions about morality, happiness, and the nature of true love.",
   },
   {
     title: "The Lady, or the Tiger?",
@@ -139,13 +201,13 @@ export const READINGS = [
       "A poignant meditation on aging and the passage of time, set against the eternal beauty of nature. The speaker returns to Coole Park after nineteen years, finding the same fifty-nine swans still graceful and passionate. While the swans remain unchanged—their hearts never growing old—the speaker feels the weight of years and change. The poem captures the bittersweet realization that beauty and vitality persist in nature even as human life moves inexorably toward decline. Yeats masterfully contrasts the speaker's growing weariness with the swans' undiminished energy and mystery.",
   },
   {
-    title: "Dover Beach",
-    author: "Matthew Arnold",
+    title: "Sonnet 116",
+    author: "William Shakespeare",
     category: "Poetry",
     label: "VICTORIAN_POETRY",
-    wordcount: 258,
+    wordcount: 109,
     summary:
-      "The poem’s speaker, considered to be Matthew Arnold himself, begins by describing a calm and quiet sea out in the English Channel. He stands on the Dover coast and looks across to France, where a small light can be seen briefly and then vanishes. This light represents the diminishing faith of the English people and the world around them. Throughout this poem, the speaker/Arnold crafts an image of the sea receding and returning to land with the world’s faith as it changes throughout time. At this point in time, though, the sea is not returning. It is receding farther out into the strait. ",
+      "William Shakespeare's 'Sonnet 116' is a profound meditation on the nature of true love. The poem asserts that genuine love is unwavering and constant, unaffected by time, circumstance, or external changes. Shakespeare uses metaphors such as the 'ever-fixed mark' and the 'star to every wandering bark' to illustrate love's steadfastness and guidance. The sonnet also challenges the idea that love can be altered or diminished by obstacles, emphasizing its enduring quality. Shakespeare's eloquent language and masterful use of the sonnet form reinforce the poem's central message: that true love is eternal and unchanging, surviving even in the face of adversity. This work remains one of the most celebrated and quoted sonnets in the English language, reflecting Shakespeare's deep understanding of human emotion and the complexities of romantic relationships.",
   },
   {
     title: "The Road Not Taken",
@@ -160,19 +222,18 @@ export const READINGS = [
     title: "Because I could not stop for Death",
     author: "Emily Dickinson",
     category: "Poetry",
-    label: "METAPHYSICAL_RELIGIOUS",
+    label: "DARK_TALES",
     wordcount: 107,
     summary:
       "Emily Dickinson's 'Because I could not stop for Death' is a masterful meditation on mortality that personifies death as a gentleman caller taking the speaker on a carriage ride through life and into eternity. Dickinson's use of personification and extended metaphor creates a gentle, almost romantic portrayal of death, challenging traditional fears and anxieties about dying. The poem's structure mirrors the journey it describes, with the speaker passing through different stages of life before reaching the final destination. Dickinson's characteristic use of dashes and unconventional punctuation creates a sense of breathlessness and immediacy, while her imagery of the carriage ride and the final resting place suggests a peaceful acceptance of death. This work exemplifies Dickinson's unique perspective on life's most profound questions and her ability to find beauty in the inevitable.",
   },
   {
-    title: "Ozymandias",
-    author: "Percy Bysshe Shelley",
+    title: "Ode to a Nightingale",
+    author: "John Keats",
+    summary: "John Keats's 'Ode to a Nightingale' is a profound meditation on the relationship between art, nature, and human mortality. The speaker, hearing a nightingale's song, is transported into a state of ecstatic contemplation about the bird's apparent immortality and freedom from human suffering. Keats's use of vivid imagery and his exploration of the contrast between the bird's eternal song and human mortality create a powerful meditation on the nature of artistic creation and the human desire for transcendence. The poem's structure and its use of the ode form emphasize the speaker's deep appreciation for the nightingale's beauty, while its philosophical depth invites readers to consider the relationship between art and human experience. Through this work, Keats examines the universal human desire for escape from suffering and the way that art can provide moments of transcendence.",
+    wordcount: 592,
     category: "Poetry",
-    label: "ROMANTIC_POETRY",
-    wordcount: 113,
-    summary:
-      "The story revolves around an archaeological and military expedition to a long-dead planet, where the characters grapple with the tension between scientific inquiry and military practicality. As they unearth remnants of an ancient civilization, their quest for knowledge becomes entwined with the implications of potentially dangerous discoveries. The narrative follows a group of archaeologists led by Dr. Leopold and a contingent of military personnel, including Colonel Mattern, as they explore Planet Four. Initially facing skepticism about the planet's value, the archaeologists ultimately discover a sentient robot named Ozymandias, which serves as a guide to the ruins of a once-flourishing civilization known as the Thaiquens. As the team learns from Ozymandias, they uncover the haunting legacy of a race that mastered advanced technology and weapons, raising ethical questions about military use of this newfound knowledge. The story culminates in a poignant reflection on the destructive nature of progress, echoing the sentiments of Shelley's poem about the hubris of past civilizations.",
+    label: "ROMANTIC_POETRY"
   },
   {
     title: "She Walks in Beauty",
@@ -202,22 +263,22 @@ export const READINGS = [
       "Alfred, Lord Tennyson's 'Crossing the Bar' is a meditation on death and the afterlife that uses maritime imagery to explore the transition from life to death. The poem describes the speaker's acceptance of his own mortality, using the metaphor of crossing a sandbar to represent the journey from life to death and the hope of meeting his 'Pilot' in the afterlife. Tennyson's use of vivid imagery and his exploration of the relationship between life and death create a powerful meditation on the nature of mortality and the human desire for meaning beyond death. The poem's structure and its use of maritime metaphor emphasize the speaker's peaceful acceptance of death, while its philosophical depth invites readers to consider the relationship between faith and mortality. Through this work, Tennyson examines the universal human experience of facing death and the way that faith can provide comfort and meaning in the face of mortality.",
   },
   {
-    title: "Fire and Ice",
-    author: "Robert Frost",
+    title: "Goblin Market",
+    author: "Christina Rossetti",
     category: "Poetry",
-    label: "NATURE_PASTORAL",
-    wordcount: 51,
+    label: "VICTORIAN_POETRY",
+    wordcount: 3039,
     summary:
-      "Robert Frost's 'Fire and Ice' is a concise yet profound meditation on the end of the world and human nature. The poem presents two opposing forces—fire and ice—as potential agents of destruction, with fire representing desire and ice symbolizing hatred. Frost's economical use of language and simple structure belies the poem's philosophical depth, as he explores the destructive potential of both passion and indifference. The poem's conversational tone and accessible imagery make complex ideas approachable, while its brevity forces readers to contemplate the weight of each word. Through this deceptively simple poem, Frost examines fundamental questions about human nature and the forces that drive both creation and destruction, suggesting that both extremes can lead to the same catastrophic end.",
+      "In the first lines of ‘Goblin Market,’ the poet describes the calls and cries of the goblin men as they try to attract customers to buy their fruits. These fruits are inherently magical, something that Lizzie, the wiser sister, knows they should stay away from. But Laura ignores this warning and pays for the deceptive fruits with a lock of her hair. Once she eats it, Laura becomes immediately addicted to the taste. ",
   },
   {
-    title: "Civil Disobedience",
+    title: "Life Without Principle",
     author: "Henry David Thoreau",
     category: "Essays",
     label: "AMERICAN_TRANSCENDENTAL",
-    wordcount: 9326,
+    wordcount: 7956,
     summary:
-      "Thoreau's seminal essay advocates for the moral responsibility to resist unjust laws and government actions through nonviolent means. Drawing on his own experience of refusing to pay taxes in protest of slavery and the Mexican-American War, Thoreau explores themes of conscience, individual liberty, and the limits of state authority. The essay has had a profound influence on social and political movements worldwide, inspiring figures such as Gandhi and Martin Luther King Jr. to practice civil disobedience as a form of protest.",
+      "In this essay, Thoreau critiques the pursuit of wealth and conventional success, arguing that individuals should live according to their own principles rather than societal expectations. He explores themes of integrity, meaningful work, and the dangers of materialism. Thoreau encourages readers to seek purpose and fulfillment in life, rather than being driven by profit or public opinion. The essay is a call to authenticity and a meditation on the importance of living a life guided by conscience and higher values.",
   },
   {
     title: "On Going a Journey",
@@ -299,12 +360,13 @@ export const READINGS = [
       "A woman receives news of her husband's death in a train accident. Initially overwhelmed by grief, she retreats to her room where she experiences an unexpected emotional transformation. As she gazes out her window at the spring day, she begins to feel a sense of liberation and freedom that she had never known in her marriage. The story explores the complex emotions of a woman who discovers her own identity and independence in the wake of what she believes is her husband's death. Through vivid imagery and psychological insight, the narrative examines themes of personal freedom, societal expectations, and the hidden desires that can emerge in moments of profound change. The story's power lies in its exploration of the inner life of a woman who finds herself unexpectedly free to live for herself.",
   },
   {
-    title: "A Bird Came Down the Walk",
+    title: "Hope is the Thing with Feathers",
     author: "Emily Dickinson",
     category: "Poetry",
     label: "NATURE_PASTORAL",
-    wordcount: 0,
-    summary: "No summary available",
+    wordcount: 69,
+    summary:
+      "Emily Dickinson's 'Hope is the thing with feathers' is a powerful metaphor poem that personifies hope as a bird that resides in the human soul. Dickinson's use of extended metaphor creates a vivid image of hope as a resilient, singing bird that never asks for anything in return, even in the harshest conditions. The poem's structure and rhythm create a sense of lightness and buoyancy, mirroring the nature of hope itself. Dickinson's characteristic use of dashes and unconventional capitalization emphasizes the poem's emotional intensity and the speaker's deep connection to this abstract concept. Through this simple yet profound metaphor, Dickinson explores the nature of hope as an essential, self-sustaining force that provides comfort and strength in times of difficulty. This work exemplifies Dickinson's ability to give concrete form to abstract emotions and ideas.",
   },
   {
     title: "On Political Secrecy",

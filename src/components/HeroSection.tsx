@@ -63,7 +63,7 @@ const HeroSection = () => {
               : "opacity-0 translate-y-8 scale-95"
           }`}
         >
-          <div className="flex flex-row justify-center items-center gap-4">
+          <div className="flex flex-row justify-center items-center gap-4 flex-wrap">
             <a
               href="https://apps.apple.com/us/app/ray-one-reading-a-day/id6747955197"
               target="_blank"

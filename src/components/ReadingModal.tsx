@@ -76,7 +76,8 @@ const ReadingModal = ({ isOpen, onClose, reading }: ReadingModalProps) => {
 
   // Get reading time estimate based on category
   const getReadingTime = (wordcount: number) => {
-    return `${Math.round(wordcount / 250)} min`;
+    const totalTime = Math.round(wordcount / 250);
+    return `${totalTime || "< 1"} min`;
   };
 
   // Format category for display
@@ -103,7 +104,7 @@ const ReadingModal = ({ isOpen, onClose, reading }: ReadingModalProps) => {
 
       {/* Modal */}
       <div
-        className={`relative bg-background rounded-[16px] md:rounded-[24px] w-full max-w-lg max-h-[800px] overflow-x-hidden overflow-y-scroll transition-all duration-300 ${
+        className={`relative bg-background rounded-[16px] md:rounded-[24px] w-full max-w-lg h-[90dvh] max-h-[800px] overflow-x-hidden overflow-y-scroll transition-all duration-300 ${
           isAnimatingOut
             ? "opacity-0 scale-95 translate-y-4"
             : isAnimatingIn

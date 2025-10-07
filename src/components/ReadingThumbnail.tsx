@@ -346,7 +346,7 @@ const ReadingThumbnail: React.FC<ReadingThumbnailProps> = ({
           <div
             className="absolute left-0 right-0 bottom-0"
             style={{
-              height: "84px",
+              height: "64px",
               background:
                 "linear-gradient(117.21deg, #BCC873 -11.39%, #834B92 105.7%)",
             }}

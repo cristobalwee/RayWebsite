@@ -121,7 +121,7 @@ export const READINGS = [
       "A powerful story that explores themes of survival, nature, and the relationship between humans and the natural world. Crane's story follows four men stranded in a small boat after their ship sinks, creating a meditation on the human struggle against nature and the ways in which people respond to extreme circumstances. The story's emphasis on the relationship between human will and natural forces reflects Crane's characteristic interest in the ways in which people confront the indifferent power of nature. His treatment of the men's struggle creates a commentary on the nature of human resilience and the limits of human control over the natural world.",
   },
   {
-    title: "How Much Land Does a Man Need?",
+    title: "How Much Land Does a Man Need",
     author: "Leo Tolstoy",
     category: "Fiction",
     label: "AMERICAN_LITERARY",
@@ -360,7 +360,7 @@ export const READINGS = [
       "A woman receives news of her husband's death in a train accident. Initially overwhelmed by grief, she retreats to her room where she experiences an unexpected emotional transformation. As she gazes out her window at the spring day, she begins to feel a sense of liberation and freedom that she had never known in her marriage. The story explores the complex emotions of a woman who discovers her own identity and independence in the wake of what she believes is her husband's death. Through vivid imagery and psychological insight, the narrative examines themes of personal freedom, societal expectations, and the hidden desires that can emerge in moments of profound change. The story's power lies in its exploration of the inner life of a woman who finds herself unexpectedly free to live for herself.",
   },
   {
-    title: "Hope is the Thing with Feathers",
+    title: "Hope is the thing with feathers",
     author: "Emily Dickinson",
     category: "Poetry",
     label: "NATURE_PASTORAL",

@@ -1,15 +1,12 @@
 import { useLenis } from "../contexts/LenisContext";
-import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { usePageTransition } from "../contexts/PageTransitionContext";
-import PrivacyPolicyModal from "./PrivacyPolicyModal";
 
 const Footer = () => {
   const { lenisRef } = useLenis();
   const location = useLocation();
   const navigate = useNavigate();
   const { startTransition } = usePageTransition();
-  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
   const handleSectionClick = async (section: string) => {
     if (location.pathname === '/') {
@@ -19,6 +16,13 @@ const Footer = () => {
       // On other pages, navigate to landing page with hash
       await startTransition();
       navigate(`/${section}`);
+    }
+  };
+
+  const handlePrivacyClick = async () => {
+    if (location.pathname !== '/privacy') {
+      await startTransition();
+      navigate('/privacy');
     }
   };
 
@@ -54,7 +58,7 @@ const Footer = () => {
                 <a href="https://cristobalgrana.me/" target="_blank" rel="noopener noreferrer" className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 text-sm md:text-base">
                   About the developer
                 </a>
-                <a onClick={() => setIsPrivacyModalOpen(true)} className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 cursor-pointer text-sm md:text-base">
+                <a onClick={handlePrivacyClick} className="block transition-all duration-300 hover:text-[#AAA] hover:translate-x-1 cursor-pointer text-sm md:text-base">
                   Privacy policy
                 </a>
               </div>
@@ -62,11 +66,6 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-
-      <PrivacyPolicyModal 
-        isOpen={isPrivacyModalOpen} 
-        onClose={() => setIsPrivacyModalOpen(false)} 
-      />
     </>
   );
 };

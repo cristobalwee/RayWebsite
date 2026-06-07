@@ -4,6 +4,7 @@ import { useState } from "react";
 import Index from "./pages/Index";
 import Preview from "./pages/Preview";
 import ReadingDetail from "./pages/ReadingDetail";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import LoadingScreen from "./components/LoadingScreen";
 import { PageTransitionProvider } from "./contexts/PageTransitionContext";
@@ -28,6 +29,7 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/preview" element={<Preview />} />
               <Route path="/preview/:id" element={<ReadingDetail />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

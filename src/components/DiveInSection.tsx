@@ -19,7 +19,7 @@ const DiveInSection = () => {
             <button 
               className="btn-primary text-base md:text-lg transition-all duration-500 ease-out"
             >
-              $9.99 on the App Store
+              Start for free today
             </button>
           </a>
           <p className="text-sm text-muted-foreground">Available in the U.S. only.</p>

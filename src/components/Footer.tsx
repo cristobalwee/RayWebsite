@@ -34,7 +34,7 @@ const Footer = () => {
             <div className="flex flex-col items-start justify-between gap-4">
               <div className="text-xl md:text-2xl font-bold logo">Ray<span className='text-[#C6698B]'>.</span></div>
               <p className="text-xs md:text-sm text-[#888888]">
-                © 2025 Ray. One reading a day.
+                © 2026 Ray. One reading a day.
               </p>
             </div>
             

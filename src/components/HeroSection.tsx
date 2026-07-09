@@ -70,21 +70,12 @@ const HeroSection = () => {
               rel="noopener noreferrer"
             >
               <button className="btn-primary text-base md:text-lg transition-all duration-500 ease-out">
-                Get the App
+                Download the app for free
               </button>
             </a>
-            <Link
-              to="/preview"
-              onClick={handlePreviewClick}
-              onMouseEnter={handlePreviewHover}
-            >
-              <button className="border border-[#464646] rounded-lg transition-all duration-500 ease-out hover:scale-105 text-base md:text-lg px-6 py-3">
-                Try the free preview
-              </button>
-            </Link>
           </div>
           <p className="text-sm text-muted-foreground">
-            One-time purchase, $9.99.
+            3-day free trial, then $9.99 lifetime.
           </p>
         </div>
       </div>

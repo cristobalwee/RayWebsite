@@ -75,7 +75,7 @@ const HeroSection = () => {
             </a>
           </div>
           <p className="text-sm text-muted-foreground">
-            3-day free trial, then $9.99 lifetime.
+            3-day free trial, then $6.99 lifetime.
           </p>
         </div>
       </div>

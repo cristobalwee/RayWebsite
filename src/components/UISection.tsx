@@ -67,17 +67,17 @@ const UISection = () => {
   return (
     <section ref={sectionRef} className="pt-32 md:pt-64 relative reveal-section">
       <div className="max-w-7xl mx-auto px-6 text-center flex flex-col items-center">
-        <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-6 md:mb-8 max-w-2xl leading-tight">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold mb-6 md:mb-8 max-w-2xl leading-tight">
           No accounts, no subscriptions, no distractions.
         </h2>
         
-        <p className="text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 max-w-3xl leading-tight">
+        <p className="text-lg md:text-xl 2xl:text-2xl mb-8 md:mb-12 max-w-3xl leading-tight">
           Our goal with Ray is to create a beautiful, focused reading experience with
           seamless interactions. Enjoy it to the fullest without having to create an account
           or pay a monthly subscription.
         </p>
 
-        <div className="relative max-w-4xl mx-8 md:mx-0 min-w-[300px]">
+        <div className="relative max-w-3xl 2xl:max-w-4xl mx-8 md:mx-0 min-w-[300px]">
           <img 
             src="/phone.webp" 
             alt="Ray App Preview" 

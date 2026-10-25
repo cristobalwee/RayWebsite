@@ -8,7 +8,7 @@ const DiveInSection = () => {
           </span>
         </div>
         
-        <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-8 md:mb-14 leading-tight">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold mb-8 md:mb-14 leading-tight">
           Ready to dive into your
           <br className="hidden sm:block" />
           &nbsp;reading journey?

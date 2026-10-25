@@ -10,7 +10,7 @@ const LibrarySection = () => {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center rounded-none md:rounded-[36px] py-12 md:py-24 px-6 md:px-20 bg-[#222222] overflow-hidden">
           <div className="flex flex-col md:flex-row gap-8 md:gap-20 items-center md:items-start justify-around text-center md:text-left">
             <div className="max-w-xl">
-              <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-6 md:mb-8 leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold mb-6 md:mb-8 leading-tight">
                 1000+ short stories, poems, and essays at your fingertips
               </h2>
               

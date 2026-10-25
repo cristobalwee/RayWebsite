@@ -37,7 +37,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
         <h1
-          className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 md:mb-8 leading-tight transition-all duration-1000 ease-out max-w-lg md:max-w-2xl mx-auto ${
+          className={`text-3xl sm:text-4xl xl:text-5xl 2xl:text-6xl font-bold mb-6 md:mb-8 leading-tight transition-all duration-1000 ease-out max-w-lg md:max-w-2xl mx-auto ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -45,7 +45,7 @@ const HeroSection = () => {
         </h1>
 
         <p
-          className={`text-lg md:text-xl xl:text-2xl mb-8 md:mb-12 max-w-3xl mx-auto transition-all duration-1000 ease-out delay-100 leading-tight ${
+          className={`text-lg md:text-xl 2xl:text-2xl mb-8 md:mb-12 max-w-3xl mx-auto transition-all duration-1000 ease-out delay-100 leading-tight ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
@@ -84,7 +84,7 @@ const HeroSection = () => {
       <img
         src="/hero.webp"
         alt="Ray App Preview"
-        className={`h-auto object-contain md:w-full md:max-w-4xl max-w-xl transition-all duration-1000 ease-out delay-300 ${
+        className={`h-auto object-contain md:w-full md:max-w-3xl 2xl:max-w-4xl max-w-xl transition-all duration-1000 ease-out delay-300 ${
           isLoaded
             ? "opacity-100 translate-y-0 scale-100"
             : "opacity-0 translate-y-12 scale-95"

@@ -2,11 +2,11 @@ const FeaturesSection = () => {
   return (
     <section className="pt-32 md:pt-64 relative reveal-section" id="features">
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-6 md:mb-8 max-w-2xl leading-tight mx-auto">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold mb-6 md:mb-8 max-w-2xl leading-tight mx-auto">
           Everything you need. Nothing you don't.
         </h2>
         
-        <p className="text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 max-w-3xl leading-tight mx-auto">
+        <p className="text-lg md:text-xl 2xl:text-2xl mb-8 md:mb-12 max-w-3xl leading-tight mx-auto">
           Simple tools that get out of your way and let you focus on what matters: creating space for discovery, reflection, and genuine connection with timeless works.
         </p>
 
